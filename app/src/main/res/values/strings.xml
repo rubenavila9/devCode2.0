@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">devCode2.0</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+
+    <string name="button_register">Register</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="cedula">ID</string>
+    <string name="password_register">Password</string>
+</resources>
