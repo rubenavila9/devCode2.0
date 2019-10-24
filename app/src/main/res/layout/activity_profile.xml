@@ -16,6 +16,7 @@ android:orientation="vertical">
             android:layout_height="400dp"
             android:background="#202732"
             android:orientation="vertical">
+            //puto el que lo la xdd
 
             <ImageView
                 android:layout_width="150dp"
