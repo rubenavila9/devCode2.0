@@ -14,4 +14,8 @@
     <string name="profile">perfil</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulodelapublicacion">titulo de la publicacion</string>
+    <string name="pregunta">Pregunta</string>
+    <string name="contenido">Contenido</string>
+    <string name="respuesta">Respuesta...</string>
 </resources>
