@@ -22,6 +22,7 @@ public class perfilfragmento extends Fragment {
 
     public perfilfragmento() {
         // Required empty public constructor
+        setHasOptionsMenu(true);
     }
 
 
@@ -35,7 +36,7 @@ public class perfilfragmento extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater=inflater.inflate(R.menu.editarperfil,menu);
+        inflater.inflate(R.menu.editarperfil,menu);
         super.onCreateOptionsMenu(menu, inflater);
 
     }
