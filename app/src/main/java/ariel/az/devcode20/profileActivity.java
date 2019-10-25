@@ -27,6 +27,7 @@ public class profileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //here i looking for the id in the layout editarperfil
         switch (item.getItemId()){
             case R.id.volver:
                 startActivity(new Intent(this,Editarperfildelusuario.class));
