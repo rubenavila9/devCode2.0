@@ -43,14 +43,14 @@ public class iniciofragmento extends Fragment {
 
         publicacion = new ArrayList<>();
 
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.user4));
+        publicacion.add(new Publicacion("Publicacion numero 2", "Ricardo Lugo", R.drawable.user));
+        publicacion.add(new Publicacion("Publicacion numero 3", "Vegetta777", R.drawable.user2));
+        publicacion.add(new Publicacion("Publicacion numero 4", "Ricardeishon", R.drawable.user3));
+        publicacion.add(new Publicacion("Publicacion numero 5", "Willyrex OMG", R.drawable.user2));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.user));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.profile));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.user4));
         publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
         publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
         publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
