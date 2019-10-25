@@ -4,7 +4,7 @@
     <string name="login">Login</string>
     <string name="email">Email</string>
     <string name="register">Register</string>
-
+    <string name="volver">Back</string>
     <string name="button_register">Register</string>
     <string name="confirm_password">Confirm password</string>
     <string name="cedula">ID</string>
