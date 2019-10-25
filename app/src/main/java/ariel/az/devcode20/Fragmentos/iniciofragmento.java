@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ariel.az.devcode20.Adaptadores.RecyclerViewAdapter;
@@ -36,9 +37,31 @@ public class iniciofragmento extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_iniciofragmento, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerHome);
-        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.profile));
-        recyclerViewAdapter = new RecyclerViewAdapter(publicacion, getContext() );
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
+        publicacion = new ArrayList<>();
+
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+        publicacion.add(new Publicacion("Publicacion numero 1", "Deiby vera", R.drawable.logo));
+
+        recyclerViewAdapter = new RecyclerViewAdapter(publicacion, getContext());
+        recyclerView.setAdapter(recyclerViewAdapter);
         recyclerView.setHasFixedSize(true);
         return view;
 
