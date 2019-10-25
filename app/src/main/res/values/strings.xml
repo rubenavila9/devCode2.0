@@ -18,5 +18,8 @@
     <string name="home">Home</string>
     <string name="publicacion">Publicacion</string>
     <string name="profile">Perfil</string>
-
+    <string name="titulodelapublicacion">tpublicacion</string>
+    <string name="pregunta">pregunta</string>
+    <string name="contenido">pregunta</string>
+    <string name="respuesta">pregunta</string>
 </resources>
