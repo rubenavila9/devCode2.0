@@ -9,19 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Editarperfildelusuario">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".profileActivity"/>
-        </activity>
-        <activity android:name=".profileActivity">
+        <activity android:name=".Principal"></activity>
+        <activity android:name=".registerActivity" />
+        <activity android:name=".loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".registerActivity" />
-        <activity android:name=".loginActivity"></activity>
     </application>
 
 </manifest>
