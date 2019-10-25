@@ -3,6 +3,7 @@ package ariel.az.devcode20;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,6 +27,11 @@ public class profileActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.volver:
+                startActivity(new Intent(this,Editarperfildelusuario.class));
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
