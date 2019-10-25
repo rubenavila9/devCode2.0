@@ -9,9 +9,17 @@
     <string name="confirm_password">Confirm password</string>
     <string name="cedula">ID</string>
     <string name="password_register">Password</string>
-    <string name="home">home</string>
-    <string name="publicacion">publicacion</string>
-    <string name="profile">perfil</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="cambiarcontraseña">Ingrese nueva contraseña</string>
+    <string name="cambiarcorreo">Ingrese nuevo correo</string>
+    <string name="cambiarntelefono">Ingrese nuevo numero de telefono</string>
+    <string name="actualizar">Actualizar Datos</string>
+    <string name="hello_blank_fragment">hello_blank_fragment</string>
+    <string name="home">Home</string>
+    <string name="publicacion">Publicacion</string>
+    <string name="profile">Perfil</string>
+    <string name="titulodelapublicacion">tpublicacion</string>
+    <string name="pregunta">pregunta</string>
+    <string name="contenido">pregunta</string>
+    <string name="respuesta">pregunta</string>
 </resources>
