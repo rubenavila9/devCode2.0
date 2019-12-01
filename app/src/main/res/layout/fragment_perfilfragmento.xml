@@ -1,135 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorperfil"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="
+#6FC1D8"
+    android:orientation="vertical">
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:orientation="vertical"
-        tools:context=".Fragmentos.perfilFragmento">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="405dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:background="#202732"
-                    android:orientation="vertical">
-                    //puto el que lo la xdd
-
-                    <ImageView
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
-                        android:src="@drawable/ic_account_circle_black_24dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="60dp"
-                        android:text="Ricardo Gabriel Lugo Sánchez"
-                        android:textColor="#fff"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-            </RelativeLayout>
+            android:layout_height="350dp">
 
             <LinearLayout
-                android:layout_width="360dp"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_gravity="center"
-                android:layout_marginTop="45dp">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    //puto el que lo la xdd
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_email_black_24dp"/>
-                    <TextView
-                        android:textColor="#fff"
-                        android:textStyle="bold"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:text="ricardogabriel759@gmail.com"/>
-                    //puto el que lo la xdd
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_phone_android_black_24dp"/>
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#ffff"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:text="0961109690"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_forum_black_24dp"/>
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:text="Ver propuestas"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"
-                    android:paddingLeft="25dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_stars_black_24dp"/>
-                    <TextView
-                        android:textStyle="bold"
-                        android:textColor="#fff"
-                        android:layout_gravity="center_vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingLeft="20dp"
-                        android:text="Propuestas destacadas"/>
-                </LinearLayout>
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:background="#70D193"
+                android:orientation="vertical">
+                //puto el que lo la xdd
+
+                <ImageView
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:src="@drawable/ic_account_circle_black_24dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="60dp"
+                    android:text="Ricardo Gabriel Lugo Sánchez"
+                    android:textColor="#fff"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
+        </RelativeLayout>
 
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.core.widget.NestedScrollView>
+        <LinearLayout
+            android:layout_width="370dp"
+            android:layout_height="310dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:layout_marginTop="45dp">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                //puto el que lo la xdd
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_email_black_24dp"/>
+                <TextView
+                    android:textColor="#fff"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="ricardogabriel759@gmail.com"/>
+                //puto el que lo la xdd
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_phone_android_black_24dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="#ffff"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="0961109690"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_forum_black_24dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Ver propuestas"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                android:paddingLeft="25dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:src="@drawable/ic_stars_black_24dp"/>
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="#fff"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:text="Propuestas destacadas"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.core.widget.NestedScrollView>

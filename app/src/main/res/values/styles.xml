@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 
         <item name="colorAccent">@color/colorPrimary</item>
-        <item name="colorAccent">#232434</item>
+        <item name="colorBackgroundFloating">#6FC1D8</item>
 
     </style>
 

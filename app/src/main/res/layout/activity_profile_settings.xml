@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorperfil">
+    android:background="#6FC1D8"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:src="@drawable/fotodeprueba" />
+        android:src="@drawable/ic_account_circle_black_24dp" />
 
     <EditText
         android:id="@+id/changepass"
@@ -20,9 +21,12 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarcontraseña"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+
+        />
 
     <EditText
         android:id="@+id/newcorreo"
@@ -31,9 +35,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
-        android:hint="@string/cambiarcorreo"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:hint="@string/cambiarcorreo" />
 
     <EditText
         android:id="@+id/newphone"
@@ -42,9 +47,10 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
-        android:hint="@string/cambiarntelefono"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:hint="@string/cambiarntelefono" />
 
     <Button
         android:id="@+id/btnEntry"
@@ -53,7 +59,8 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/publicacion"
-        android:background="@drawable/botonlogin"/>
+        android:background="#70D193"
+        android:textColorHint="#FFF"
+        android:hint="@string/savechanges" />
 
 </LinearLayout>
