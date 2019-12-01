@@ -22,4 +22,6 @@
     <string name="pregunta">pregunta</string>
     <string name="contenido">pregunta</string>
     <string name="respuesta">pregunta</string>
+    <string name="savechanges">Guardar Cambios</string>
+
 </resources>

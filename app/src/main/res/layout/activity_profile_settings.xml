@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3c9d9b"
+    android:background="#6FC1D8"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -12,7 +12,7 @@
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="10dp"
-        android:src="@drawable/fotodeprueba" />
+        android:src="@drawable/ic_account_circle_black_24dp" />
 
     <EditText
         android:id="@+id/changepass"
@@ -21,9 +21,11 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#FFF"
         android:ems="10"
-        android:hint="@string/cambiarcontraseña" />
+        android:hint="@string/cambiarcontraseña"
+
+        />
 
     <EditText
         android:id="@+id/newcorreo"
@@ -32,7 +34,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarcorreo" />
 
@@ -43,7 +45,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarntelefono" />
 
@@ -54,7 +56,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:background="#394a6d"
-        android:hint="@string/publicacion" />
+        android:background="#70D193"
+        android:hint="@string/savechanges" />
 
 </LinearLayout>
