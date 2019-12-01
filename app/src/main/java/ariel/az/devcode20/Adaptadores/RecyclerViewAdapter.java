@@ -67,10 +67,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void dim (ModelsPublicationsList publicacion){
             this.nameUser.setText(publicacion.getNamepublication());
             this.publicacionUser.setText(publicacion.getDescriptpublication());
+
             //Glide.with(mContext).load(publicacion.getImage_user()).into(profile_image);
         }
-
-
 
     }
 
