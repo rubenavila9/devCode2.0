@@ -1,92 +1,77 @@
-package ariel.az.devcode20;
+package ariel.az.devcode20.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import ariel.az.devcode20.connect.Router;
-import ariel.az.devcode20.connect.conexion;
-import ariel.az.devcode20.models.Login;
+import ariel.az.devcode20.R;
+import ariel.az.devcode20.Realm.LoginRealm;
+import ariel.az.devcode20.configurationAndRouters.Router;
+import ariel.az.devcode20.configurationAndRouters.conexion;
+import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.Token;
+import io.realm.Realm;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class loginActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
-    Button ButtonLogin;
-    Button ButtonRegister;
-    EditText Editext, EditText2;
-    Router router;
-    conexion conexi;
+    private Button ButtonLogin, ButtonRegister;
+    private EditText email, pass;
+    private Realm realm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        realm = Realm.getDefaultInstance();
         ButtonLogin = findViewById(R.id.btnEntry);
         ButtonRegister = findViewById(R.id.btnRegister);
-        Editext = findViewById(R.id.email);
-        EditText2 = findViewById(R.id.pass);
-
+        email = findViewById(R.id.email);
+        pass = findViewById(R.id.pass);
 
         ButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //   if(true){
-                // Log.i("onClick","if");
-                // }else {
-                //   Log.i("onClick","else");
 
-                //  }
-                //Llamar a la nueva pantalla
-                Intent intent = new Intent(loginActivity.this,
-                        registerActivity.class);
-                startActivity(intent);
             }
         });
 
         ButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                connect();
+                login(email.getText().toString(),pass.getText().toString());
             }
         });
     }
 
-
-    private void connect(){
-        Login login;
-        router = conexi.getApiService();
-        login = new Login("joa","ddd");
+    public  void login(final String email, final String pass){
+        Router router = conexion.getApiService();
+        ModelLogin login = new ModelLogin(email,pass);
         Call<Token> tokenCall = router.login(login);
-
         tokenCall.enqueue(new Callback<Token>() {
             @Override
             public void onResponse(Call<Token> call, Response<Token> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()){
+                    //obtiene el json que me devuelte el backend
                     String token = response.body().getAuthToken();
-                    Log.i("token", token);
+                    //inicializo realm
+                    realm.beginTransaction();
+                    LoginRealm loginRealm = new LoginRealm(email,token,pass);
+                    realm.copyToRealm(loginRealm);
+                    realm.commitTransaction();
+                    startActivity(new Intent(LoginActivity.this, Principal.class));
                 }
             }
-
             @Override
             public void onFailure(Call<Token> call, Throwable t) {
 
             }
         });
-
-
-
-
     }
-
-
-
 }

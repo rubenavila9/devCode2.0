@@ -1,4 +1,4 @@
-package ariel.az.devcode20.Modelos;
+package ariel.az.devcode20.models;
 
 public class Publicacion {
    private String name_publication;

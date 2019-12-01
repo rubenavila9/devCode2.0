@@ -22,10 +22,10 @@ import ariel.az.devcode20.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class perfilfragmento extends Fragment {
+public class perfilFragmento extends Fragment {
 
 
-    public perfilfragmento() {
+    public perfilFragmento() {
         // Required empty public constructor
         setHasOptionsMenu(true);
     }

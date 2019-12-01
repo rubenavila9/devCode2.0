@@ -6,7 +6,7 @@
         android:layout_height="match_parent"
         android:background="@color/colorperfil"
         android:orientation="vertical"
-        tools:context=".Fragmentos.perfilfragmento">
+        tools:context=".Fragmentos.perfilFragmento">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:orientation="vertical"
             android:layout_marginBottom="20dp"
