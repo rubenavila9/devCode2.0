@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">devCode</string>
+    <string name="app_name">DevCode</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
@@ -23,5 +23,7 @@
     <string name="contenido">pregunta</string>
     <string name="respuesta">pregunta</string>
     <string name="savechanges">Guardar Cambios</string>
+    <string name="salir">Cerrar sesión</string>
+    <string name="help">Ayuda</string>
 
 </resources>

@@ -2,7 +2,9 @@ package ariel.az.devcode20.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText email, pass;
     private Realm realm;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         ButtonRegister = findViewById(R.id.btnRegister);
         email = findViewById(R.id.email);
         pass = findViewById(R.id.pass);
+
 
         ButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +75,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<Token> call, Throwable t) {
 
             }
+
         });
     }
 }

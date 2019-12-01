@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-<item android:id="@+id/volver" android:title="@string/volver"/>
+
+    <item android:id="@+id/volver" android:title="@string/volver"/>
+    <item
+        android:id="@+id/sign_out_login"
+        android:title="@string/salir"/>
+    <item
+        android:id="@+id/ayuda"
+        android:title="@string/help"/>
 
 </menu>
