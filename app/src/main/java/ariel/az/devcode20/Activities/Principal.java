@@ -1,4 +1,4 @@
-package ariel.az.devcode20;
+package ariel.az.devcode20.Activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,9 +9,10 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import ariel.az.devcode20.Fragmentos.iniciofragmento;
-import ariel.az.devcode20.Fragmentos.perfilfragmento;
-import ariel.az.devcode20.Fragmentos.publicacionfragmento;
+import ariel.az.devcode20.Fragmentos.InicioFragmento;
+import ariel.az.devcode20.Fragmentos.perfilFragmento;
+import ariel.az.devcode20.Fragmentos.publicacionFragmento;
+import ariel.az.devcode20.R;
 
 public class Principal extends AppCompatActivity {
 
@@ -25,7 +26,7 @@ public class Principal extends AppCompatActivity {
 
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new iniciofragmento()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_layout, new InicioFragmento()).commit();
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -36,14 +37,14 @@ public class Principal extends AppCompatActivity {
 
                     switch (menuItem.getItemId()) {
                         case R.id.home:
-                            selectedFragment = new iniciofragmento();
+                            selectedFragment = new InicioFragmento();
                             break;
 
                         case R.id.publicacion:
-                            selectedFragment = new publicacionfragmento();
+                            selectedFragment = new publicacionFragmento();
                             break;
                         case R.id.profile:
-                            selectedFragment = new perfilfragmento();
+                            selectedFragment = new perfilFragmento();
                             break;
 
                     }

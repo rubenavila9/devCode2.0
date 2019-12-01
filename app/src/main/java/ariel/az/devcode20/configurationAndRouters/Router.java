@@ -1,9 +1,9 @@
-package ariel.az.devcode20.connect;
+package ariel.az.devcode20.configurationAndRouters;
 
-import ariel.az.devcode20.models.Login;
+import ariel.az.devcode20.models.ListPublications;
+import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.Token;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -14,13 +14,26 @@ import retrofit2.http.POST;
 public interface Router {
 
 
-    //    --------------------------------------------------------------------------------------------------------
+    //    --------------------Iniciar sesion-------------
+
     @POST("user/login")
-    Call<Token> login(@Body Login login);
+    Call<Token> login(@Body ModelLogin login);
 
-    @GET("user/publications")
-    Call<ResponseBody> setSecret(@Header("auto-token")String autoToken);
+    //---------------------obtener todas las publicaciones-------------------
 
+
+    @GET("publications/home")
+    Call<ListPublications> LIST_PUBLICATIONS_CALL();
+
+    //--------------------------------------------------------------------------
+
+
+
+
+
+
+    //@GET("user/publications")
+    //Call<ResponseBody> setSecret(@Header("auto-token")String autoToken);
 
     //    -----------------------------------------------------------------------------------------------
     @Headers({
@@ -31,6 +44,7 @@ public interface Router {
     Call<ModelsPublications> createPublications(@Header("auto-token")String autoToken,
                                                 @Body ModelsPublications modelsPublications);
 //    -----------------------------------------------------------------------------------------------------
+
 
 
 

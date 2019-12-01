@@ -15,17 +15,19 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.List;
 
-import ariel.az.devcode20.Modelos.Publicacion;
+import ariel.az.devcode20.models.ModelsPublications;
+import ariel.az.devcode20.models.ModelsPublicationsList;
+import ariel.az.devcode20.models.Publicacion;
 import ariel.az.devcode20.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
 
-    private List<Publicacion> publicacion;
+    private ArrayList<ModelsPublicationsList> publicacion;
     private Context mContext;
 
-    public RecyclerViewAdapter(List<Publicacion> publicacion, Context mContext) {
+    public RecyclerViewAdapter(ArrayList<ModelsPublicationsList> publicacion, Context mContext) {
         this.publicacion = publicacion;
         this.mContext = mContext;
     }
@@ -62,13 +64,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             layoutRecyclerView = itemView.findViewById(R.id.layoutRecyclerView);
         }
 
-        public void dim (Publicacion publicacion){
-            this.nameUser.setText(publicacion.getName_user());
-            this.publicacionUser.setText(publicacion.getName_publication());
-            Glide.with(mContext).load(publicacion.getImage_user()).into(profile_image);
-
-
-
+        public void dim (ModelsPublicationsList publicacion){
+            this.nameUser.setText(publicacion.getNamepublication());
+            this.publicacionUser.setText(publicacion.getDescriptpublication());
+            //Glide.with(mContext).load(publicacion.getImage_user()).into(profile_image);
         }
 
 

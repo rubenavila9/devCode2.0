@@ -17,10 +17,10 @@ import ariel.az.devcode20.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class publicacionfragmento extends Fragment {
+public class publicacionFragmento extends Fragment {
 
 
-    public publicacionfragmento() {
+    public publicacionFragmento() {
         // Required empty public constructor
     }
 

@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class Users {
+public class ListPublications {
 
-    @SerializedName("users")
+    @SerializedName("publications")
     @Expose
-    private ArrayList<ModelsUsers> modelsProducts = null;
+    private ArrayList<ModelsPublicationsList> modelsProducts = null;
 
-    public ArrayList<ModelsUsers> getModelsProducts() {
+    public ArrayList<ModelsPublicationsList> getModelsProducts() {
         return modelsProducts;
     }
 
