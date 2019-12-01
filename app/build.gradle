@@ -32,7 +32,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
     //imageCircleView
     implementation 'de.hdodenhof:circleimageview:3.0.1'
-
     //retrofit
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.squareup.retrofit2:retrofit:2.6.0'
