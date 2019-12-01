@@ -5,5 +5,8 @@
     <item
         android:id="@+id/sign_out_login"
         android:title="@string/salir"/>
+    <item
+        android:id="@+id/ayuda"
+        android:title="@string/help"/>
 
 </menu>

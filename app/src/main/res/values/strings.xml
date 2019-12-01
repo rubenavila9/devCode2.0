@@ -24,5 +24,6 @@
     <string name="respuesta">pregunta</string>
     <string name="savechanges">Guardar Cambios</string>
     <string name="salir">Cerrar sesión</string>
+    <string name="help">Ayuda</string>
 
 </resources>

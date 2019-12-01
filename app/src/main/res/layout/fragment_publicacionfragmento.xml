@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Fragmentos.publicacionFragmento"
-    android:background="#202732">
+    android:background="#6FC1D8">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -94,7 +94,8 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:background="@drawable/botonpublicar"
+        android:background="#70D193"
+
         android:text="publicar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
