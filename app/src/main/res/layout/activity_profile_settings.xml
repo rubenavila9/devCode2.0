@@ -22,6 +22,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarcontraseña"
 
@@ -35,6 +36,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarcorreo" />
 
@@ -46,6 +48,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#FFF"
+        android:textColorHint="#FFF"
         android:ems="10"
         android:hint="@string/cambiarntelefono" />
 
@@ -57,6 +60,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:background="#70D193"
+        android:textColorHint="#FFF"
         android:hint="@string/savechanges" />
 
 </LinearLayout>
