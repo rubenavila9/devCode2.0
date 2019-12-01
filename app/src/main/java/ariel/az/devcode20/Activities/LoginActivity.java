@@ -38,7 +38,6 @@ public class LoginActivity extends AppCompatActivity {
         ButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
             }
         });
 
