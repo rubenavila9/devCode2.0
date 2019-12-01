@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorperfil">
+    android:background="#3c9d9b"
+    android:gravity="center"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="200dp"
@@ -20,9 +21,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:hint="@string/cambiarcontraseña"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:hint="@string/cambiarcontraseña" />
 
     <EditText
         android:id="@+id/newcorreo"
@@ -31,9 +32,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:hint="@string/cambiarcorreo"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:hint="@string/cambiarcorreo" />
 
     <EditText
         android:id="@+id/newphone"
@@ -42,9 +43,9 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/colorPrimaryDark"
         android:ems="10"
-        android:hint="@string/cambiarntelefono"
-        android:backgroundTint="@color/colorPrimaryDark"/>
+        android:hint="@string/cambiarntelefono" />
 
     <Button
         android:id="@+id/btnEntry"
@@ -53,7 +54,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
-        android:hint="@string/publicacion"
-        android:background="@drawable/botonlogin"/>
+        android:background="#394a6d"
+        android:hint="@string/publicacion" />
 
 </LinearLayout>

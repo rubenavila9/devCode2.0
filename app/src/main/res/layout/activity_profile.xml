@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/colorperfil"
+android:background="#70D193"
 android:orientation="vertical">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:orientation="vertical"
@@ -14,12 +14,13 @@ android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="405dp">
+            android:layout_height="350dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:background="#202732"
+                android:layout_height="350dp"
+                android:background="#6FC1D8
+"
                 android:orientation="vertical">
                 //puto el que lo la xdd
 
@@ -45,8 +46,8 @@ android:orientation="vertical">
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
+            android:layout_width="370dp"
+            android:layout_height="310dp"
             android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_marginTop="45dp">
