@@ -15,4 +15,6 @@ public class ModelsPublications {
         this.descriptPublication = descriptPublication;
         this.levelSubject = levelSubject;
     }
+
+
 }

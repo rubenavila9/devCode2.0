@@ -10,9 +10,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +23,9 @@ import ariel.az.devcode20.Activities.LoginActivity;
 import ariel.az.devcode20.Adaptadores.RecyclerViewAdapter;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
+import ariel.az.devcode20.models.ItemPrueba;
 import ariel.az.devcode20.models.ListPublications;
+import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.ModelsPublicationsList;
 import ariel.az.devcode20.models.Publicacion;
 import ariel.az.devcode20.R;
@@ -49,15 +53,16 @@ public class InicioFragmento extends Fragment {
         final View view = inflater.inflate(R.layout.fragment_iniciofragmento, container, false);
 
         Router router  = conexion.getApiService();
-        Call<ListPublications> listPublicationsCall = router.LIST_PUBLICATIONS_CALL();
-        listPublicationsCall.enqueue(new Callback<ListPublications>() {
+
+       Call<ListPublications> listCall= router.LIST_PUBLICATIONS_CALL();
+        listCall.enqueue(new Callback<ListPublications>() {
             @Override
             public void onResponse(Call<ListPublications> call, Response<ListPublications> response) {
                 if (response.isSuccessful()){
                     RecyclerView recyclerView = view.findViewById(R.id.recyclerHome);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                     recyclerView.setLayoutManager(layoutManager);
-                    modelsPublicationsLists = response.body().getModelsProducts();
+                    modelsPublicationsLists = response.body().getModelsPublicationsLists();
                     recyclerViewAdapter = new RecyclerViewAdapter(modelsPublicationsLists,getContext());
                     recyclerView.setAdapter(recyclerViewAdapter);
                     recyclerView.setHasFixedSize(true);
@@ -70,10 +75,9 @@ public class InicioFragmento extends Fragment {
             }
         });
 
-//        recyclerViewAdapter = new RecyclerViewAdapter(publicacion, getContext());
-//        recyclerView.setAdapter(recyclerViewAdapter);
-//        recyclerView.setHasFixedSize(true);
-        return view;
+
+
+       return view;
 
     }
 

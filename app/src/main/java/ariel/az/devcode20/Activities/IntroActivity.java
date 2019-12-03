@@ -18,8 +18,7 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import ariel.az.devcode20.Fragmentos.InicioFragmento;
-import ariel.az.devcode20.IntroViewPagerAdapter;
+import ariel.az.devcode20.Adaptadores.IntroViewPagerAdapter;
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.ScreenItem;
 

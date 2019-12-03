@@ -1,4 +1,4 @@
-package ariel.az.devcode20;
+package ariel.az.devcode20.Adaptadores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import java.util.List;
+
+import ariel.az.devcode20.R;
+import ariel.az.devcode20.ScreenItem;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
 
