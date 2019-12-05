@@ -2,6 +2,7 @@ package ariel.az.devcode20.Adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,6 +77,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     //les coloco un id a cada dato para luego cruzarlo a ptro activity
                     int position = getAdapterPosition();
                     Intent intent = new Intent(mContext, DetailsPublicationsActivity.class);
+                    intent.putExtra("idPublication",publicacion.get(position).getIdpublication().toString());
                     intent.putExtra("titlePublication",publicacion.get(position).getNamepublication());
                     intent.putExtra("detailsPublications",publicacion.get(position).getDescriptpublication());
                     intent.putExtra("idUser",publicacion.get(position).getUserid());

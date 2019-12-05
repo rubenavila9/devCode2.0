@@ -7,6 +7,9 @@ import retrofit2.Call;
 
 public class ModelsPublicationsList {
 
+    @SerializedName("idpublication")
+    @Expose
+    private Integer idpublication;
 
     @SerializedName("namepublication")
     @Expose
@@ -20,6 +23,10 @@ public class ModelsPublicationsList {
     @Expose
     private Integer userid;
 
+
+    public Integer getIdpublication() {
+        return idpublication;
+    }
 
     public String getNamepublication() {
         return namepublication;
