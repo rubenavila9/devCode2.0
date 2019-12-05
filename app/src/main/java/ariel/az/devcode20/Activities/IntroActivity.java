@@ -44,8 +44,7 @@ public class IntroActivity extends AppCompatActivity {
         // is about
 
         if(restorePrefData()){
-
-            Intent inicioFragmento = new Intent(IntroActivity.this,Principal.class);
+            Intent inicioFragmento = new Intent(IntroActivity.this,LoginActivity.class);
             startActivity(inicioFragmento);
             finish();
         }
@@ -131,9 +130,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //open main activity
-
-
-                Intent inicioFragmento = new Intent(IntroActivity.this, Principal.class);
+                Intent inicioFragmento = new Intent(IntroActivity.this, LoginActivity.class);
                 startActivity(inicioFragmento);
 
                 savePrefsData();
@@ -144,8 +141,6 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private boolean restorePrefData() {
-
-
         SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
         Boolean isIntroActivityOpnenBefore = pref.getBoolean("isIntroOpenend", false);
         return isIntroActivityOpnenBefore;

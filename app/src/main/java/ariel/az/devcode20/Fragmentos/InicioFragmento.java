@@ -38,9 +38,6 @@ public class InicioFragmento extends Fragment {
 
     RecyclerViewAdapter recyclerViewAdapter;
     ArrayList<ModelsPublicationsList> modelsPublicationsLists;
-
-
-
     public InicioFragmento() {
         // Required empty public constructor no borrar
     }
@@ -51,10 +48,9 @@ public class InicioFragmento extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_iniciofragmento, container, false);
-
         Router router  = conexion.getApiService();
-
        Call<ListPublications> listCall= router.LIST_PUBLICATIONS_CALL();
+       //aqui hace la consulta una consulta para obtener las publicaciones
         listCall.enqueue(new Callback<ListPublications>() {
             @Override
             public void onResponse(Call<ListPublications> call, Response<ListPublications> response) {
@@ -62,6 +58,7 @@ public class InicioFragmento extends Fragment {
                     RecyclerView recyclerView = view.findViewById(R.id.recyclerHome);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                     recyclerView.setLayoutManager(layoutManager);
+                    //la respuesta obtenieda lo almacena para luego usarlos en el adaptor recyclerview
                     modelsPublicationsLists = response.body().getModelsPublicationsLists();
                     recyclerViewAdapter = new RecyclerViewAdapter(modelsPublicationsLists,getContext());
                     recyclerView.setAdapter(recyclerViewAdapter);

@@ -19,11 +19,13 @@
     <string name="publicacion">Publicacion</string>
     <string name="profile">Perfil</string>
     <string name="titulodelapublicacion">tpublicacion</string>
+    <string name="detallesdelapregunta">detalles de la preogunta</string>
     <string name="pregunta">pregunta</string>
     <string name="contenido">pregunta</string>
     <string name="respuesta">pregunta</string>
     <string name="savechanges">Guardar Cambios</string>
     <string name="salir">Cerrar sesión</string>
     <string name="help">Ayuda</string>
+    <string name="publicar">Enviar</string>
 
 </resources>
