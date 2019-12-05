@@ -8,14 +8,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
-
 import ariel.az.devcode20.Activities.DetailsPublicationsActivity;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
@@ -47,7 +43,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
        holder.dim(publicacion.get(position));
     }
 
@@ -63,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         CircleImageView profile_image;
         TextView nameUser, title, publicacionUser;
         LinearLayout layoutRecyclerView;
-        public ViewHolder(@NonNull final View itemView) {
+        public ViewHolder( final View itemView) {
             super(itemView);
             profile_image = itemView.findViewById(R.id.profile_image);
             nameUser = itemView.findViewById(R.id.nameUser);
@@ -107,7 +103,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 @Override
                 public void onFailure(Call<ModelsUser> call, Throwable t) {
-
                 }
             });
 

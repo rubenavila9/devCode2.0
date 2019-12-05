@@ -1,6 +1,8 @@
 package ariel.az.devcode20.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -8,17 +10,21 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
+
+import ariel.az.devcode20.Adaptadores.RvCommentAdapter;
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.Realm.SaveDataUser;
+import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsCreateMessages;
+import ariel.az.devcode20.models.ModelsGetMessages;
+import ariel.az.devcode20.models.ModelsListMessages;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +38,10 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private Router router;
     private EditText postRespond;
     private Integer idPublication;
+    private ArrayList<ModelsGetMessages> modelsGetMessages;
+    private RecyclerView rvComment;
+    RvCommentAdapter commentAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +54,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         postRespond = findViewById(R.id.postRespond);
         getData();
         router = conexion.getApiService();
+        getMessagesPublications();
+
         btnRespond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,6 +67,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     public void onResponse(Call<ModelsCreateMessages> call, Response<ModelsCreateMessages> response) {
                         if (response.isSuccessful()){
                             Toast.makeText(DetailsPublicationsActivity.this, "Mensaje exitoso!", Toast.LENGTH_SHORT).show();
+                            getMessagesPublications();
                         }
                     }
 
@@ -66,6 +79,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
     private void getData() {
@@ -76,5 +91,34 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         Glide.with(DetailsPublicationsActivity.this).load(SaveDataUser.getImgUser(preferences)).into(imgUser);
     }
 
+
+    private void getMessagesPublications(){
+        //para obtener los mensajes de cada publicacion
+        Call<ModelsListMessages> modelsListMessagesCall = router.modelsListMessagesCall(idPublication);
+        modelsListMessagesCall.enqueue(new Callback<ModelsListMessages>() {
+            @Override
+            public void onResponse(Call<ModelsListMessages> call, Response<ModelsListMessages> response) {
+                if (response.isSuccessful()){
+                    modelsGetMessages = response.body().getModelsGetMessages();
+                    rvComment = findViewById(R.id.rvCommentary);
+                    RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailsPublicationsActivity.this);
+                    commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
+                        @Override
+                        public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
+                            commentAdapter.notifyItemChanged(position);
+                        }
+                    });
+                    rvComment.setLayoutManager(layoutManager);
+                    rvComment.setAdapter(commentAdapter);
+                    rvComment.setHasFixedSize(true);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelsListMessages> call, Throwable t) {
+
+            }
+        });
+    }
 
 }

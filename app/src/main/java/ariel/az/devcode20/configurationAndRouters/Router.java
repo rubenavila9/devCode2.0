@@ -3,6 +3,7 @@ package ariel.az.devcode20.configurationAndRouters;
 import ariel.az.devcode20.models.ListPublications;
 import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsCreateMessages;
+import ariel.az.devcode20.models.ModelsListMessages;
 import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.ModelsUser;
 import ariel.az.devcode20.models.Token;
@@ -12,6 +13,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 
@@ -33,7 +35,14 @@ public interface Router {
     @GET("user/{id}")
     Call<ModelsUser> setId(@Path("id") int id);
 
-    //--------------------------------------------------------------------------
+    //-----------------------obtener los mensajes con el id de la publicacion------------------------------
+
+    @GET("messages/{idpublication}")
+    Call<ModelsListMessages> modelsListMessagesCall(@Path("idpublication")Integer id);
+
+
+
+
 
 
 

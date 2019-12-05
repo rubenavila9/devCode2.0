@@ -1,4 +1,4 @@
-package ariel.az.devcode20.Realm;
+package ariel.az.devcode20.SharedPreferencesUser;
 
 import android.content.SharedPreferences;
 
