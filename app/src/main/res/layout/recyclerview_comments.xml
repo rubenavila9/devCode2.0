@@ -7,6 +7,7 @@
     android:layout_marginTop="10dp"
     android:background="@color/grayWhite">
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/photoUserMessage"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="30dp"

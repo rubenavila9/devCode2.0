@@ -3,7 +3,7 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="email">Email</string>
-    <string name="register">Register</string>
+    <string name="register">Registrar</string>
     <string name="volver">Editar</string>
     <string name="button_register">Register</string>
     <string name="confirm_password">Confirm password</string>

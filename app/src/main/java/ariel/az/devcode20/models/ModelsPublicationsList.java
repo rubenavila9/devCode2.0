@@ -3,6 +3,10 @@ package ariel.az.devcode20.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 
 public class ModelsPublicationsList {
@@ -19,9 +23,13 @@ public class ModelsPublicationsList {
     @Expose
     private String descriptpublication;
 
-    @SerializedName("userid")
+    @SerializedName("userIduser")
     @Expose
     private Integer userid;
+
+    @SerializedName("user")
+    @Expose
+    private ModelsUser iduser;
 
 
     public Integer getIdpublication() {
@@ -40,6 +48,11 @@ public class ModelsPublicationsList {
 
     public Integer getUserid() {
         return userid;
+    }
+
+
+    public ModelsUser getIduser() {
+        return iduser;
     }
 }
 

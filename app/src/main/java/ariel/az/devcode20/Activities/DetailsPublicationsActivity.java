@@ -66,7 +66,6 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ModelsCreateMessages> call, Response<ModelsCreateMessages> response) {
                         if (response.isSuccessful()){
-                            Toast.makeText(DetailsPublicationsActivity.this, "Mensaje exitoso!", Toast.LENGTH_SHORT).show();
                             getMessagesPublications();
                         }
                     }
@@ -102,7 +101,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     modelsGetMessages = response.body().getModelsGetMessages();
                     rvComment = findViewById(R.id.rvCommentary);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailsPublicationsActivity.this);
-                    commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
+                    commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
                             commentAdapter.notifyItemChanged(position);

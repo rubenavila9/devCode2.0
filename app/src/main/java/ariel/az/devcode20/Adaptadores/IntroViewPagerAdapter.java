@@ -13,7 +13,7 @@ import androidx.viewpager.widget.PagerAdapter;
 import java.util.List;
 
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.ScreenItem;
+import ariel.az.devcode20.models.ScreenItem;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
 
