@@ -75,6 +75,14 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
+            switch (item.getItemId()){
+                case R.id.edit:
+                    Toast.makeText(context, "editar", Toast.LENGTH_SHORT).show();
+                    return true;
+                case R.id.delete:
+                    Toast.makeText(context, "eliminar", Toast.LENGTH_SHORT).show();
+                    return true;
+            }
             return false;
         }
 
@@ -87,6 +95,9 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             MenuInflater inflater = context.getMenuInflater();
             //inflamos el menu
             inflater.inflate(R.menu.menumessages,menu);
+            // Por ultimo añadimos uno por uno el listener onMenuItemClick para
+            // controlar las acciones en el contextMenu anteriormente lo manejabamos
+            // con el metodo onContextItemSelected en el activity
             for (int i=0; i< menu.size(); i++){
                 menu.getItem(i).setOnMenuItemClickListener(this);
             }
