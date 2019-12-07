@@ -2,20 +2,15 @@ package ariel.az.devcode20.Adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
-
 import java.util.ArrayList;
-
 import ariel.az.devcode20.Activities.DetailsPublicationsActivity;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
@@ -29,10 +24,8 @@ import retrofit2.Response;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
-
     private ArrayList<ModelsPublicationsList> publicacion;
     private Context mContext;
-    private ModelsUser modelsUsers;
 
     public RecyclerViewAdapter(ArrayList<ModelsPublicationsList> publicacion, Context mContext) {
         this.publicacion = publicacion;
@@ -47,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
        holder.dim(publicacion.get(position));
     }
 
@@ -59,11 +52,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        Router router = conexion.getApiService();
         CircleImageView profile_image;
         TextView nameUser, title, publicacionUser;
         LinearLayout layoutRecyclerView;
-        public ViewHolder(@NonNull final View itemView) {
+        public ViewHolder( final View itemView) {
             super(itemView);
             profile_image = itemView.findViewById(R.id.profile_image);
             nameUser = itemView.findViewById(R.id.nameUser);
@@ -88,30 +80,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         public void dim (ModelsPublicationsList publicacion){
             this.nameUser.setText(publicacion.getNamepublication());
             this.publicacionUser.setText(publicacion.getDescriptpublication());
-            cosultTwo(publicacion.getUserid());
+            Glide.with(mContext).load(publicacion.getIduser().getPhotouser()).into(profile_image);
         }
 
-        private void cosultTwo(int id) {
-            //aqui recibe el id del usuario para hacer otra consulta y obtener los datos del
-            //del usuario y colocar fotos y su nombre
-            final Call<ModelsUser> listUserCall = router.setId(id);
-            listUserCall.enqueue(new Callback<ModelsUser>() {
-                @Override
-                public void onResponse(Call<ModelsUser> call, Response<ModelsUser> response) {
-                    if (response.isSuccessful()){
-                        modelsUsers = response.body();
-                        title.setText(modelsUsers.getNameuser());
-                        Glide.with(mContext).load(modelsUsers.getPhotouser()).into(profile_image);
-                    }
-                }
 
-                @Override
-                public void onFailure(Call<ModelsUser> call, Throwable t) {
-
-                }
-            });
-
-        }
 
 
 

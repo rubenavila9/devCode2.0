@@ -1,4 +1,4 @@
-package ariel.az.devcode20;
+package ariel.az.devcode20.models;
 
 public class ScreenItem {
 

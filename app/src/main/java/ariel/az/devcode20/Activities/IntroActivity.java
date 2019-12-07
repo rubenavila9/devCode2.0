@@ -20,7 +20,7 @@ import java.util.List;
 
 import ariel.az.devcode20.Adaptadores.IntroViewPagerAdapter;
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.ScreenItem;
+import ariel.az.devcode20.models.ScreenItem;
 
 public class IntroActivity extends AppCompatActivity {
 

@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.Realm.SaveDataUser;
+import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelLogin;
@@ -40,6 +40,7 @@ public class LoginActivity extends AppCompatActivity {
         ButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
         });
 
