@@ -24,9 +24,7 @@
         android:backgroundTint="#FFF"
         android:textColorHint="#FFF"
         android:ems="10"
-        android:hint="@string/cambiarcontraseña"
-
-        />
+        android:hint="@string/cambiarcontraseña"/>
 
     <EditText
         android:id="@+id/newcorreo"
@@ -38,7 +36,7 @@
         android:backgroundTint="#FFF"
         android:textColorHint="#FFF"
         android:ems="10"
-        android:hint="@string/cambiarcorreo" />
+        android:hint="@string/cambiarcorreo"/>
 
     <EditText
         android:id="@+id/newphone"
