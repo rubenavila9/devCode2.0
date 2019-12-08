@@ -87,7 +87,6 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         titledescription.setText(getIntent().getExtras().getString("titlePublication"));
         detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
         idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
-        Glide.with(DetailsPublicationsActivity.this).load(SaveDataUser.getImgUser(preferences)).into(imgUser);
     }
 
 

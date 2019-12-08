@@ -11,16 +11,29 @@
     <EditText
         android:id="@+id/emailRegister"
         android:layout_width="match_parent"
-        android:hint="@string/email"
+        android:hint="@string/emailUser"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/passRegister"
         android:hint="@string/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Spinner
+        android:id="@+id/spinnerTypeUser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <Button
         android:id="@+id/btnRegister"
         android:text="@string/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/imgUserRegister"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+
+
 </androidx.appcompat.widget.LinearLayoutCompat>

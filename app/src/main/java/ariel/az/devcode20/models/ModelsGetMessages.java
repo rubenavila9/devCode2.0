@@ -3,7 +3,7 @@ package ariel.az.devcode20.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.lang.reflect.Array;
+
 
 public class ModelsGetMessages {
 

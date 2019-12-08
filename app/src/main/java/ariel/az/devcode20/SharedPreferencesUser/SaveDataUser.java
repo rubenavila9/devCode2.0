@@ -12,11 +12,11 @@ public class SaveDataUser {
     }
 
     public static String getToken(SharedPreferences preferences){
-        return preferences.getString("token", "");
+        return preferences.getString("tokenUser", "");
     }
 
-    public static String getImgUser(SharedPreferences preferences){
-        return preferences.getString("imgUser", "");
+    public static String getRoleUser(SharedPreferences preferences){
+        return preferences.getString("roleUser", "");
     }
 
 }
