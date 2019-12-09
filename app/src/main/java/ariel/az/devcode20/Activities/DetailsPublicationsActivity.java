@@ -41,6 +41,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private RecyclerView rvComment;
     RvCommentAdapter commentAdapter;
+    private String roleUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         titledescription.setText(getIntent().getExtras().getString("titlePublication"));
         detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
         idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
+        roleUser= SaveDataUser.getEmailUser(preferences);
     }
 
 
@@ -100,7 +102,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     modelsGetMessages = response.body().getModelsGetMessages();
                     rvComment = findViewById(R.id.rvCommentary);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(DetailsPublicationsActivity.this);
-                    commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
+                    commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, roleUser, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
                             commentAdapter.notifyItemChanged(position);

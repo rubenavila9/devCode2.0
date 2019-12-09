@@ -144,8 +144,6 @@ public class RegisterActivity extends AppCompatActivity {
             roleUser = RequestBody.create(MediaType.parse(MULTIPART_TYPE), role);
             part = MultipartBody.Part.createFormData("photo", file.getName(), fileReqBody);
 
-
-
             router = conexion.getApiService();
             Call<ModelsRegister> modelsRegisterCall = router.updateUser(nameUser,emailUser);
 

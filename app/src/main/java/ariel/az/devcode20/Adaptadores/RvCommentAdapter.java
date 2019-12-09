@@ -1,8 +1,6 @@
 package ariel.az.devcode20.Adaptadores;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -12,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
@@ -19,11 +19,9 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsUser;
 
-
-import static android.content.Context.MODE_PRIVATE;
-
 public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.ViewHolder> {
-    private Activity context;
+    private Activity activity;
+    private String emailUser;
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private OnItemClickListener onItemClickListener;
     private Integer idPublication;
@@ -31,8 +29,9 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
 
-    public RvCommentAdapter(Activity context,Integer idPublication ,ArrayList<ModelsGetMessages> modelsGetMessages, OnItemClickListener onItemClickListener) {
-        this.context = context;
+    public RvCommentAdapter(Activity context,String roleUser, Integer idPublication ,ArrayList<ModelsGetMessages> modelsGetMessages, OnItemClickListener onItemClickListener) {
+        this.activity = context;
+        this.emailUser = roleUser;
         this.idPublication = idPublication;
         this.modelsGetMessages = modelsGetMessages;
         this.onItemClickListener = onItemClickListener;
@@ -77,7 +76,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         public void setInformation(final ModelsGetMessages modelsGetMessages, final OnItemClickListener onItemClickListener){
             //se coloca los datos del usuario
             commentaryUser.setText(modelsGetMessages.getMessageuser());
-            Glide.with(context).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
+            Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
                 linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -94,12 +93,18 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             switch (item.getItemId()){
                 case R.id.edit:
                     //obtiene la posicion con el getAdapterPosition
-                    editMessage(getAdapterPosition());
+                    //editMessage(getAdapterPosition());
+                    Toast.makeText(activity, "editar", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.delete:
                     //obtiene la posicion con el getAdapterPosition
-                    deleteMessage(getAdapterPosition());
+                    //deleteMessage(getAdapterPosition());
+                    Toast.makeText(activity, "delete", Toast.LENGTH_SHORT).show();
                     return true;
+
+                case R.id.denunciar:
+                    Toast.makeText(activity, "denunciar", Toast.LENGTH_SHORT).show();
+                    return  true;
             }
             return false;
         }
@@ -109,17 +114,27 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             //recogemos la position con el metodo getAdapterPosition
             ModelsGetMessages modelsGet = modelsGetMessages.get(this.getAdapterPosition());
-            //establecemos el titulo para cada elemento
+
+            if (emailUser.equals(modelsGet.getUser().getEmailuser())){
+                //establecemos el titulo para cada elemento
                 menu.setHeaderTitle(modelsGet.getMessageuser());
-                MenuInflater inflater = context.getMenuInflater();
-                //inflamos el menu
+                MenuInflater inflater = activity.getMenuInflater();
                 inflater.inflate(R.menu.menumessages,menu);
+
+            }
+
+            if (!emailUser.equals(modelsGet.getUser().getEmailuser())){
+                menu.setHeaderTitle("Delete");
+                MenuInflater inflater = activity.getMenuInflater();
+                inflater.inflate(R.menu.denunciar,menu);
+            }
+
+            for (int i=0; i< menu.size(); i++){
                 // Por ultimo añadimos uno por uno el listener onMenuItemClick para
                 // controlar las acciones en el contextMenu anteriormente lo manejabamos
                 // con el metodo onContextItemSelected en el activity
-                for (int i=0; i< menu.size(); i++){
-                    menu.getItem(i).setOnMenuItemClickListener(this);
-                }
+                menu.getItem(i).setOnMenuItemClickListener(this);
+            }
 
         }
 

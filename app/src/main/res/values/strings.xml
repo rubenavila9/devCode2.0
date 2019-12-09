@@ -30,5 +30,6 @@
     <string name="mensajeUsuario">Mensaje del usuario</string>
     <string name="editar">editar</string>
     <string name="eliminar">eliminar</string>
+    <string name="denunciar">denunciar</string>
 
 </resources>

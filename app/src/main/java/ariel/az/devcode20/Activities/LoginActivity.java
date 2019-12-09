@@ -86,7 +86,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<ModelsUser> call, Response<ModelsUser> response) {
                 if (response.isSuccessful()){
                     String roleUser = response.body().getRoleuser();
-                    saveSharepreferences(token,roleUser);
+                    String emailUser = response.body().getEmailuser();
+                    saveSharepreferences(token,roleUser,emailUser);
                     Intent intent = new Intent(LoginActivity.this,Principal.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -98,11 +99,12 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void saveSharepreferences(String token,String roleUser){
+    private void saveSharepreferences(String token,String roleUser,String emailUser){
         //guardar el token
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("tokenUser", token);
         editor.putString("roleUser",roleUser);
+        editor.putString("emailUser",emailUser);
         editor.apply();
 
     }

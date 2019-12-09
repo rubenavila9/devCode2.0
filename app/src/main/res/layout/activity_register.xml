@@ -11,7 +11,7 @@
     <EditText
         android:id="@+id/emailRegister"
         android:layout_width="match_parent"
-        android:hint="@string/emailUser"
+        android:hint="@string/email"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/passRegister"

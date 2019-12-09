@@ -33,7 +33,7 @@
         android:layout_marginBottom="32dp"
         android:backgroundTint="@color/colorPrimary"
         android:ems="10"
-        android:hint="@string/emailUser"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
