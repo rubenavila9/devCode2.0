@@ -13,5 +13,7 @@
     <color name="intro_title_color">#000000</color>
     <color name="intro_description_color">#656565</color>
     <color name="grayWhite">#f4f4f4</color>
-
+    <color name="lavaColor">#801336</color>
+    <color name="cream">#fff4e4</color>
+    <color name="blueSky">#f2f6f5</color>
 </resources>

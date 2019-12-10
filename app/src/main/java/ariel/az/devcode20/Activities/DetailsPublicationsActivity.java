@@ -40,8 +40,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private Integer idPublication;
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private RecyclerView rvComment;
-    RvCommentAdapter commentAdapter;
-    private String roleUser;
+    private RvCommentAdapter commentAdapter;
+    private String roleUser, photoUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +89,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
         idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
         roleUser= SaveDataUser.getEmailUser(preferences);
+        photoUser = SaveDataUser.getImgUser(preferences);
+        Glide.with(DetailsPublicationsActivity.this).load(photoUser).into(imgUser);
     }
 
 
@@ -105,6 +107,10 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, roleUser, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
+                            modelsGetMessages.like(1);
+                            //Toast.makeText(DetailsPublicationsActivity.this, "" + modelsGetMessages.getIdmessage().toString(), Toast.LENGTH_SHORT).show();
+
+
                             commentAdapter.notifyItemChanged(position);
                         }
                     });

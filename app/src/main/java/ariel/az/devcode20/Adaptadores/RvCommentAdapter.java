@@ -1,6 +1,8 @@
 package ariel.az.devcode20.Adaptadores;
 
 import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
@@ -26,6 +29,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
     private OnItemClickListener onItemClickListener;
     private Integer idPublication;
     private ModelsUser modelsUsers;
+
 
 
 
@@ -59,10 +63,10 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        private TextView commentaryUser;
+        private TextView commentaryUser, countLike;
         private LinearLayout linearLayoutComments;
-        private ImageView photoUserMessage;
-
+        private ImageView photoUserMessage, photoLike;
+        private ArrayList<String> likeByComment = new ArrayList<>();
 
         public ViewHolder( View itemView) {
             super(itemView);
@@ -70,13 +74,24 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             commentaryUser = itemView.findViewById(R.id.commentaryUser);
             linearLayoutComments = itemView.findViewById(R.id.linearLayoutComments);
             photoUserMessage = itemView.findViewById(R.id.photoUserMessage);
+            countLike = itemView.findViewById(R.id.countLike);
+            photoLike = itemView.findViewById(R.id.imageLike);
             itemView.setOnCreateContextMenuListener(this);
         }
 
         public void setInformation(final ModelsGetMessages modelsGetMessages, final OnItemClickListener onItemClickListener){
             //se coloca los datos del usuario
+
             commentaryUser.setText(modelsGetMessages.getMessageuser());
             Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
+            if (modelsGetMessages.getLike() > modelsGetMessages.likeByCommentary){
+                photoLike.setVisibility(View.VISIBLE);
+                countLike.setText(modelsGetMessages.getLike() + "");
+                likeByComment.add(modelsGetMessages.getMessageuser());
+                //show();
+            }
+
+
                 linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -85,7 +100,9 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                 });
         }
 
+        private void show() {
 
+        }
 
 
         @Override
