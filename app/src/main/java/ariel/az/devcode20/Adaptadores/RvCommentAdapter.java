@@ -3,9 +3,7 @@ package ariel.az.devcode20.Adaptadores;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -20,8 +18,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
@@ -113,12 +109,10 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.edit:
-                    //editMessage(getAdapterPosition());
                     editMessage(getAdapterPosition());
                     return true;
                 case R.id.delete:
-                    //deleteMessage(getAdapterPosition());
-                    Toast.makeText(activity, "delete", Toast.LENGTH_SHORT).show();
+                    deleteMessage(getAdapterPosition());
                     return true;
                 case R.id.denunciar:
                     Toast.makeText(activity, "denunciar", Toast.LENGTH_SHORT).show();
@@ -156,21 +150,13 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
         }
 
-        private void deleteMessage(Integer id){
-            //eliminar mensaje
-            modelsGetMessages.remove(id);
-            notifyItemRemoved(id);
-
-        }
-
-
         private void editMessage(Integer id){
             //editar mensaje
             final EditText commentaryPublication;
             final TextView userCommentary;
             Button btnUpdateCommentary;
             myDialog = new Dialog(activity);
-            myDialog.setContentView(R.layout.dialog_design);
+            myDialog.setContentView(R.layout.dialog_commentary_design);
             myDialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
             //obtener los campo
             commentaryPublication = myDialog.findViewById(R.id.commentaryPublication);
@@ -187,6 +173,48 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             });
             myDialog.show();
         }
+
+
+
+
+
+
+
+        private void deleteMessage(Integer id){
+            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            builder.setMessage(R.string.advertencia).setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            }).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            builder.show();
+            //modelsGetMessages.remove(id);
+            //notifyItemRemoved(id);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

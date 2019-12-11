@@ -1,23 +1,24 @@
 package ariel.az.devcode20.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Stack;
 
 import ariel.az.devcode20.Adaptadores.RvCommentAdapter;
@@ -45,6 +46,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private RecyclerView rvComment;
     private RvCommentAdapter commentAdapter;
     private String roleUser, photoUser;
+    private Dialog myDialog;
     private Stack<Integer> pila = new Stack<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +84,24 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //agregar el menu para editar el comentario
+        getMenuInflater().inflate(R.menu.edit_publications,menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.changeComment:
+                showEdit();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     private void getData() {
@@ -134,6 +152,28 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
 
     }
 
+
+
+    private void showEdit(){
+        final EditText descriptionQuestions, titleQuestions;
+        Button btnUpdateQuestions;
+        myDialog = new Dialog(DetailsPublicationsActivity.this);
+        myDialog.setContentView(R.layout.dialog_questions_design);
+        myDialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
+
+        titleQuestions = myDialog.findViewById(R.id.titleQuestions);
+        descriptionQuestions = myDialog.findViewById(R.id.descriptionQuestions);
+        btnUpdateQuestions = myDialog.findViewById(R.id.btnUpdateQuestions);
+        titleQuestions.setText(getIntent().getExtras().getString("titlePublication"));
+        descriptionQuestions.setText(getIntent().getExtras().getString("detailsPublications"));
+        btnUpdateQuestions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDialog.cancel();
+            }
+        });
+        myDialog.show();
+    }
 
 
 

@@ -31,5 +31,7 @@
     <string name="editar">editar</string>
     <string name="eliminar">eliminar</string>
     <string name="denunciar">denunciar</string>
-
+    <string name="si">Aceptar</string>
+    <string name="no">Salir</string>
+    <string name="advertencia">Esta seguro de eliminar</string>
 </resources>
