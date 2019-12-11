@@ -1,7 +1,10 @@
 package ariel.az.devcode20.Adaptadores;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -9,15 +12,21 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
+import java.util.Stack;
+
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsUser;
@@ -66,11 +75,12 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         private TextView commentaryUser, countLike;
         private LinearLayout linearLayoutComments;
         private ImageView photoUserMessage, photoLike;
-        private ArrayList<String> likeByComment = new ArrayList<>();
+        private ModelsGetMessages modelsGet;
+        private Dialog myDialog;
+        private Stack<String> commentaryStack = new Stack<>();
 
         public ViewHolder( View itemView) {
             super(itemView);
-            //buscar los id
             commentaryUser = itemView.findViewById(R.id.commentaryUser);
             linearLayoutComments = itemView.findViewById(R.id.linearLayoutComments);
             photoUserMessage = itemView.findViewById(R.id.photoUserMessage);
@@ -81,17 +91,12 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
         public void setInformation(final ModelsGetMessages modelsGetMessages, final OnItemClickListener onItemClickListener){
             //se coloca los datos del usuario
-
             commentaryUser.setText(modelsGetMessages.getMessageuser());
             Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
             if (modelsGetMessages.getLike() > modelsGetMessages.likeByCommentary){
                 photoLike.setVisibility(View.VISIBLE);
                 countLike.setText(modelsGetMessages.getLike() + "");
-                likeByComment.add(modelsGetMessages.getMessageuser());
-                //show();
             }
-
-
                 linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -100,25 +105,21 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                 });
         }
 
-        private void show() {
 
-        }
+
 
 
         @Override
         public boolean onMenuItemClick(MenuItem item) {
             switch (item.getItemId()){
                 case R.id.edit:
-                    //obtiene la posicion con el getAdapterPosition
                     //editMessage(getAdapterPosition());
-                    Toast.makeText(activity, "editar", Toast.LENGTH_SHORT).show();
+                    editMessage(getAdapterPosition());
                     return true;
                 case R.id.delete:
-                    //obtiene la posicion con el getAdapterPosition
                     //deleteMessage(getAdapterPosition());
                     Toast.makeText(activity, "delete", Toast.LENGTH_SHORT).show();
                     return true;
-
                 case R.id.denunciar:
                     Toast.makeText(activity, "denunciar", Toast.LENGTH_SHORT).show();
                     return  true;
@@ -141,7 +142,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             }
 
             if (!emailUser.equals(modelsGet.getUser().getEmailuser())){
-                menu.setHeaderTitle("Delete");
+                menu.setHeaderTitle("Denunciar");
                 MenuInflater inflater = activity.getMenuInflater();
                 inflater.inflate(R.menu.denunciar,menu);
             }
@@ -163,11 +164,37 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         }
 
 
-
         private void editMessage(Integer id){
             //editar mensaje
-
+            final EditText commentaryPublication;
+            final TextView userCommentary;
+            Button btnUpdateCommentary;
+            myDialog = new Dialog(activity);
+            myDialog.setContentView(R.layout.dialog_design);
+            myDialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
+            //obtener los campo
+            commentaryPublication = myDialog.findViewById(R.id.commentaryPublication);
+            userCommentary = myDialog.findViewById(R.id.userCommentary);
+            btnUpdateCommentary = myDialog.findViewById(R.id.btnUpdateCommentary);
+            userCommentary.setText("Está a punto de editar su comentario " + modelsGetMessages.get(id).getUser().getNameuser());
+            commentaryPublication.setText(String.valueOf(modelsGetMessages.get(id).getMessageuser()));
+            btnUpdateCommentary.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    commentaryStack.push(commentaryPublication.getText().toString());
+                    myDialog.cancel();
+                }
+            });
+            myDialog.show();
         }
+
+
+
+        private void denunciar(Integer position){
+            Stack<Integer> report = new Stack<>();
+            report.push(position);
+        }
+
 
     }
 

@@ -16,6 +16,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
 import ariel.az.devcode20.Adaptadores.RvCommentAdapter;
 import ariel.az.devcode20.R;
@@ -42,7 +45,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private RecyclerView rvComment;
     private RvCommentAdapter commentAdapter;
     private String roleUser, photoUser;
-
+    private Stack<Integer> pila = new Stack<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,9 +111,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
                             modelsGetMessages.like(1);
-                            //Toast.makeText(DetailsPublicationsActivity.this, "" + modelsGetMessages.getIdmessage().toString(), Toast.LENGTH_SHORT).show();
-
-
+                            pila.push(modelsGetMessages.getIdmessage());
                             commentAdapter.notifyItemChanged(position);
                         }
                     });
@@ -126,5 +127,14 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+    }
+
+
+
 
 }

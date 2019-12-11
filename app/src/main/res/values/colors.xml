@@ -16,4 +16,7 @@
     <color name="lavaColor">#801336</color>
     <color name="cream">#fff4e4</color>
     <color name="blueSky">#f2f6f5</color>
+    <color name="white">#fff</color>
+    <color name="red_sky">#f67280</color>
+    <color name="black_circle">#FF000000</color>
 </resources>
