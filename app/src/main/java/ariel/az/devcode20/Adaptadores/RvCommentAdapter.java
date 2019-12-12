@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -24,8 +25,13 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import ariel.az.devcode20.R;
+import ariel.az.devcode20.configurationAndRouters.Router;
+import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsUser;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.ViewHolder> {
     private Activity activity;
@@ -33,7 +39,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private OnItemClickListener onItemClickListener;
     private Integer idPublication;
-    private ModelsUser modelsUsers;
+    private Router router;
 
 
 
@@ -177,41 +183,43 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
 
-
-
-
         private void deleteMessage(Integer id){
-            AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+            final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setMessage(R.string.advertencia).setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                    Integer position = modelsGetMessages.get(getAdapterPosition()).getIdmessage();
+                    deleteDatabase(position);
+                    modelsGetMessages.remove(getAdapterPosition());
+                    notifyItemRemoved(getAdapterPosition());
                 }
             }).setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-
+                    builder.setCancelable(true);
                 }
             });
             builder.show();
-            //modelsGetMessages.remove(id);
-            //notifyItemRemoved(id);
-
         }
 
 
+        private void deleteDatabase(final Integer id){
+            //enviar la informacion a la base de datos para la eliminacion de un comentario
+            router = conexion.getApiService();
+            Call<ModelsGetMessages> modelsGetMessagesCall = router.deleteCommentary(id);
+            modelsGetMessagesCall.enqueue(new Callback<ModelsGetMessages>() {
+                @Override
+                public void onResponse(Call<ModelsGetMessages> call, Response<ModelsGetMessages> response) {
+                    if (response.isSuccessful()){
+                    }
+                }
 
+                @Override
+                public void onFailure(Call<ModelsGetMessages> call, Throwable t) {
 
-
-
-
-
-
-
-
-
-
-
+                }
+            });
+        }
 
 
 

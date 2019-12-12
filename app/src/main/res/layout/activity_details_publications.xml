@@ -15,22 +15,23 @@
             android:id="@+id/linearLayoutDetails"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/grayWhite"
+            android:gravity="center"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintBottom_toTopOf="@+id/View"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/title_publication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/titulodelapublicacion" />
+                android:text="@string/titulodelapublicacion"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_publications"
@@ -39,16 +40,29 @@
                 android:text="@string/detallesdelapregunta" />
         </LinearLayout>
 
+        <View
+            android:id="@+id/View"
+            android:layout_width="match_parent"
+            android:layout_height="0.4dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/intro_title_color"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDetails" />
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/View"
+            app:layout_constraintBottom_toTopOf="@+id/rvCommentary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDetails">
+            app:layout_constraintTop_toBottomOf="@+id/View">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageUser"
@@ -66,20 +80,11 @@
                 android:id="@+id/btnRespond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/botonregistrologin"
-                android:text="@string/publicar" />
+                android:background="@color/grayWhite"
+                android:drawableTint="@color/colorPrimary"
+                android:text="@string/publicar"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
-
-        <View
-            android:id="@+id/View"
-            android:layout_width="match_parent"
-            android:layout_height="0.4dp"
-            android:background="@color/intro_title_color"
-            android:layout_marginTop="10dp"
-            app:layout_constraintBottom_toTopOf="@+id/rvCommentary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvCommentary"
@@ -89,7 +94,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/View"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             app:layout_constraintVertical_bias="0.13" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

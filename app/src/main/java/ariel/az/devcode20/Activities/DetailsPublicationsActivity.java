@@ -72,6 +72,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<ModelsCreateMessages> call, Response<ModelsCreateMessages> response) {
                         if (response.isSuccessful()){
+                            postRespond.setText("");
                             getMessagesPublications();
                         }
                     }

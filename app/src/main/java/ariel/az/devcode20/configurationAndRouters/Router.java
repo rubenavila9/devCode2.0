@@ -3,6 +3,7 @@ package ariel.az.devcode20.configurationAndRouters;
 import ariel.az.devcode20.models.ListPublications;
 import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsCreateMessages;
+import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsListMessages;
 import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.ModelsRegister;
@@ -13,6 +14,7 @@ import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -74,10 +76,11 @@ public interface Router {
     @GET("messages/{idpublication}")
     Call<ModelsListMessages> modelsListMessagesCall(@Path("idpublication")Integer id);
 
+    //------------------------------elimininar commentarios--------------------------------------------------
 
-
-
-
+    @DELETE("messages/{idmessage}")
+    Call<ModelsGetMessages> deleteCommentary(@Path("idmessage") int id);
+    //---------------------------------------------------------------------------------------------------------
 
 
 
