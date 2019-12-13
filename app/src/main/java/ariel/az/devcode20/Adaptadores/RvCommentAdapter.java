@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -28,7 +29,7 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsGetMessages;
-import ariel.az.devcode20.models.ModelsUser;
+import ariel.az.devcode20.models.ModelsSendLikes;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -95,19 +96,20 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             //se coloca los datos del usuario
             commentaryUser.setText(modelsGetMessages.getMessageuser());
             Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
-            if (modelsGetMessages.getLike() > modelsGetMessages.likeByCommentary){
+            if(modelsGetMessages.getLikepublication() > 0) {
                 photoLike.setVisibility(View.VISIBLE);
-                countLike.setText(modelsGetMessages.getLike() + "");
+                countLike.setText(modelsGetMessages.getLikepublication()+"");
             }
-                linearLayoutComments.setOnClickListener(new View.OnClickListener() {
+
+
+
+            linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         onItemClickListener.OnItemClick(modelsGetMessages,getAdapterPosition());
                     }
                 });
         }
-
-
 
 
 
@@ -121,7 +123,8 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                     deleteMessage(getAdapterPosition());
                     return true;
                 case R.id.denunciar:
-                    Toast.makeText(activity, "denunciar", Toast.LENGTH_SHORT).show();
+                    denunciar(getAdapterPosition());
+                    photoLike.setColorFilter(Color.RED);
                     return  true;
             }
             return false;
@@ -142,7 +145,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             }
 
             if (!emailUser.equals(modelsGet.getUser().getEmailuser())){
-                menu.setHeaderTitle("Denunciar");
+                menu.setHeaderTitle(modelsGet.getMessageuser());
                 MenuInflater inflater = activity.getMenuInflater();
                 inflater.inflate(R.menu.denunciar,menu);
             }
@@ -181,8 +184,6 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         }
 
 
-
-
         private void deleteMessage(Integer id){
             final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setMessage(R.string.advertencia).setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
@@ -201,7 +202,6 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             });
             builder.show();
         }
-
 
         private void deleteDatabase(final Integer id){
             //enviar la informacion a la base de datos para la eliminacion de un comentario
@@ -226,9 +226,11 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
 
+
+
+
         private void denunciar(Integer position){
-            Stack<Integer> report = new Stack<>();
-            report.push(position);
+            Toast.makeText(activity, "" + modelsGetMessages.get(position).getIdmessage().toString(), Toast.LENGTH_SHORT).show();
         }
 
 

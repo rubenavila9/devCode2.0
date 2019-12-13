@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class ModelsUser {
 
+    @SerializedName("iduser")
+    @Expose
+    private Integer iduser;
+
     @SerializedName("nameuser")
     @Expose
     private String nameuser;
@@ -20,6 +24,11 @@ public class ModelsUser {
     @SerializedName("photouser")
     @Expose
     private String photouser;
+
+
+    public Integer getIduser() {
+        return iduser;
+    }
 
     public String getNameuser() {
         return nameuser;

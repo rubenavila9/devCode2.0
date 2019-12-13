@@ -15,18 +15,25 @@ public class ModelsGetMessages {
     @Expose
     private String messageuser;
 
-    @SerializedName("userid")
+    @SerializedName("userIduser")
     @Expose
     private Integer userid;
+
+    @SerializedName("likepublication")
+    @Expose
+    private Integer likepublication;
+
 
     @SerializedName("user")
     @Expose
     private ModelsUser user;
 
+
     private Integer like = 0;
 
     //VALORES DE LOS LIKE POR COMENTARIOS
     public Integer likeByCommentary= 0;
+
 
 
     public Integer getIdmessage() {
@@ -37,8 +44,14 @@ public class ModelsGetMessages {
         return messageuser;
     }
 
-    public Integer getUserid() {
-        return userid;
+
+
+    public Integer getLikepublication() {
+        return likepublication;
+    }
+
+    public void setLikepublication(Integer likepublication) {
+        this.likepublication = likepublication;
     }
 
     public ModelsUser getUser() {
@@ -46,12 +59,17 @@ public class ModelsGetMessages {
     }
 
 
+
     public Integer getLike() {
         return like;
     }
 
+    public void setLike(Integer like) {
+        this.like = like;
+    }
+
     public void like(Integer likeByUser){
-        if (this.like <= likeByCommentary){
+        if (this.like <= likepublication){
             this.like+=likeByUser;
         }
     }

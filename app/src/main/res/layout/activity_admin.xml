@@ -8,9 +8,9 @@
     tools:context=".Activities.AdminActivity"
     android:gravity="center">
 
-    <TextView
-        android:text="Admin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/recyclerAdmin"
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"/>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

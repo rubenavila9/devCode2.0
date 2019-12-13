@@ -2,25 +2,23 @@ package ariel.az.devcode20.configurationAndRouters;
 
 import ariel.az.devcode20.models.ListPublications;
 import ariel.az.devcode20.models.ModelLogin;
+import ariel.az.devcode20.models.ModelsCreateLikes;
 import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
+import ariel.az.devcode20.models.ModelsReconstrour;
 import ariel.az.devcode20.models.ModelsListMessages;
-import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.ModelsRegister;
 import ariel.az.devcode20.models.ModelsUser;
 import ariel.az.devcode20.models.Token;
-import okhttp3.MultipartBody;
+import ariel.az.devcode20.models.ModelsSendLikes;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
@@ -80,7 +78,22 @@ public interface Router {
 
     @DELETE("messages/{idmessage}")
     Call<ModelsGetMessages> deleteCommentary(@Path("idmessage") int id);
-    //---------------------------------------------------------------------------------------------------------
+    //--------------------------------actualizar los likes en la table messages-------------------------------------------------
+
+
+    @POST("messages/update")
+    Call<ModelsSendLikes> updateMessagesCall(@Body ModelsSendLikes modelsCreateMessages);
+
+    //----------------------------------obtener los likes (revision)-------------------------------------------------------------------
+    @GET("likes/getLikes")
+    Call<ModelsReconstrour> modelsLikesListCall();
+
+    //-------------------------------------envio de los likes --------------------------------------------------------------------
+
+    @POST("likes/createLikes")
+    Call<ModelsCreateLikes> MODELS_CREATE_LIKES_CALL (@Header("auto-token")String autoToken,
+                                                      @Body ModelsCreateLikes modelsCreateLikes);
+
 
 
 

@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +27,7 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
+import ariel.az.devcode20.models.ModelsCreateLikes;
 import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsListMessages;
@@ -129,8 +131,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, roleUser, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
-                            modelsGetMessages.like(1);
-                            pila.push(modelsGetMessages.getIdmessage());
+                            addLike(modelsGetMessages.getIdmessage());
                             commentAdapter.notifyItemChanged(position);
                         }
                     });
@@ -175,6 +176,28 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         });
         myDialog.show();
     }
+
+
+
+    private void addLike(Integer idMessage){
+        ModelsCreateLikes modelsCreateLikes = new ModelsCreateLikes(idMessage);
+        Call<ModelsCreateLikes> modelsCreateLikesCall = router.MODELS_CREATE_LIKES_CALL(SaveDataUser.getToken(preferences),modelsCreateLikes);
+        modelsCreateLikesCall.enqueue(new Callback<ModelsCreateLikes>() {
+            @Override
+            public void onResponse(Call<ModelsCreateLikes> call, Response<ModelsCreateLikes> response) {
+                if (response.isSuccessful()){
+                    getMessagesPublications();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelsCreateLikes> call, Throwable t) {
+
+            }
+        });
+     }
+
+
 
 
 

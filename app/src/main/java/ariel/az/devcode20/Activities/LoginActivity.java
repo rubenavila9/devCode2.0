@@ -85,10 +85,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ModelsUser> call, Response<ModelsUser> response) {
                 if (response.isSuccessful()){
+                    Integer idUser = response.body().getIduser();
                     String roleUser = response.body().getRoleuser();
                     String emailUser = response.body().getEmailuser();
                     String photoUser = response.body().getPhotouser();
-                    saveSharepreferences(token,roleUser,emailUser,photoUser);
+                    saveSharepreferences(idUser,token,roleUser,emailUser,photoUser);
                     Intent intent = new Intent(LoginActivity.this,Principal.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
@@ -100,9 +101,10 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void saveSharepreferences(String token,String roleUser,String emailUser, String photoUser){
+    private void saveSharepreferences(Integer idUser,String token,String roleUser,String emailUser, String photoUser){
         //guardar el token
         SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("idUser",idUser);
         editor.putString("tokenUser", token);
         editor.putString("roleUser",roleUser);
         editor.putString("emailUser",emailUser);
