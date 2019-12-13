@@ -18,8 +18,8 @@
     <string name="home">Inicio</string>
     <string name="publicacion">Publicación</string>
     <string name="profile">Perfil</string>
-    <string name="titulodelapublicacion">tpublicacion</string>
-    <string name="detallesdelapregunta">detalles de la preogunta</string>
+    <string name="titulodelapublicacion">titulo de la pregunta</string>
+    <string name="detallesdelapregunta">detalles de la pregunta</string>
     <string name="pregunta">pregunta</string>
     <string name="contenido">pregunta</string>
     <string name="respuesta">pregunta</string>
@@ -34,4 +34,17 @@
     <string name="si">Aceptar</string>
     <string name="no">Salir</string>
     <string name="advertencia">Esta seguro de eliminar</string>
+    <string name="selecccionarNivel">Seleccione el nivel</string>
+    <string-array name="nivel">
+        <item>nivel 1</item>
+        <item>nivel 2</item>
+        <item>nivel 3</item>
+        <item>nivel 4</item>
+        <item>nivel 5</item>
+        <item>nivel 6</item>
+        <item>nivel 7</item>
+        <item>nivel 9</item>
+        <item>extras</item>
+    </string-array>
+
 </resources>

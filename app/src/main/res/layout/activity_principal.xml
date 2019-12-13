@@ -17,6 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         app:menu="@menu/navegacion"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
         android:background="?android:attr/windowBackground"
         />
 </RelativeLayout>
