@@ -47,9 +47,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private RecyclerView rvComment;
     private RvCommentAdapter commentAdapter;
-    private String roleUser, photoUser;
+    private String roleUser, photoUser, emailUser;
     private Dialog myDialog;
-    private Stack<Integer> pila = new Stack<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +91,9 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //agregar el menu para editar el comentario
-        getMenuInflater().inflate(R.menu.edit_publications,menu);
+        if (emailUser.equals(SaveDataUser.getEmailUser(preferences))){
+            getMenuInflater().inflate(R.menu.edit_publications,menu);
+        }
         return true;
     }
 
@@ -112,6 +113,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         titledescription.setText(getIntent().getExtras().getString("titlePublication"));
         detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
         idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
+        emailUser = getIntent().getExtras().getString("emailUser");
         roleUser= SaveDataUser.getEmailUser(preferences);
         photoUser = SaveDataUser.getImgUser(preferences);
         Glide.with(DetailsPublicationsActivity.this).load(photoUser).into(imgUser);

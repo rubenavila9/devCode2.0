@@ -100,9 +100,6 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                 photoLike.setVisibility(View.VISIBLE);
                 countLike.setText(modelsGetMessages.getLikepublication()+"");
             }
-
-
-
             linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
