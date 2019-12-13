@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="
-#6FC1D8"
+    android:background="@color/colorPrimary"
     android:orientation="vertical">
     <androidx.appcompat.widget.LinearLayoutCompat
         android:orientation="vertical"
@@ -14,37 +14,32 @@
         android:layout_height="match_parent">
 
         <RelativeLayout
+            android:id="@+id/RelativeLayoutProfile"
             android:layout_width="match_parent"
-            android:layout_height="350dp">
+            android:layout_height="350dp"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-                android:background="#70D193"
+                android:gravity="center"
                 android:orientation="vertical">
-                //puto el que lo la xdd
-
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/photoUser"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="20dp"
                     android:src="@drawable/ic_account_circle_black_24dp" />
-
                 <TextView
+                    android:id="@+id/nameUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="60dp"
+                    android:layout_marginTop="10dp"
                     android:text="Ricardo Gabriel Lugo Sánchez"
-                    android:textColor="#fff"
                     android:textSize="22sp"
                     android:textStyle="bold" />
-
             </LinearLayout>
-
         </RelativeLayout>
-
         <LinearLayout
             android:layout_width="370dp"
             android:layout_height="310dp"
@@ -61,14 +56,16 @@
                     android:layout_width="36dp"
                     android:layout_height="36dp"
                     android:src="@drawable/ic_email_black_24dp"/>
+
                 <TextView
-                    android:textColor="#fff"
-                    android:textStyle="bold"
-                    android:layout_gravity="center_vertical"
+                    android:id="@+id/emailUser"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="ricardogabriel759@gmail.com"/>
+                    android:text="ricardogabriel759@gmail.com"
+                    android:textColor="#fff"
+                    android:textStyle="bold" />
                 //puto el que lo la xdd
             </LinearLayout>
             <LinearLayout

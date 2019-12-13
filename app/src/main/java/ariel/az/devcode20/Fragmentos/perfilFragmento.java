@@ -2,10 +2,13 @@ package ariel.az.devcode20.Fragmentos;
 
 
 import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,16 +17,25 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import ariel.az.devcode20.Editarperfildelusuario;
 import ariel.az.devcode20.R;
+import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class perfilFragmento extends Fragment {
 
+
+    private TextView nameUser, emailUser;
+    private SharedPreferences preferences;
+    private CircleImageView photoUser;
 
     public perfilFragmento() {
         // Required empty public constructor
@@ -35,7 +47,16 @@ public class perfilFragmento extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_perfilfragmento, container, false);
+        View view = inflater.inflate(R.layout.fragment_perfilfragmento, container, false);
+        preferences = this.getActivity().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+        nameUser = view.findViewById(R.id.nameUser);
+        photoUser = view.findViewById(R.id.photoUser);
+        emailUser = view.findViewById(R.id.emailUser);
+        nameUser.setText(SaveDataUser.getEmailUser(preferences));
+        emailUser.setText(SaveDataUser.getEmailUser(preferences));
+
+        Glide.with(this.getActivity()).load(SaveDataUser.getImgUser(preferences)).into(photoUser);
+        return  view;
     }
 
 
