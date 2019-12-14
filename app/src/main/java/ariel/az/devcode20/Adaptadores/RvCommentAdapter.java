@@ -3,7 +3,9 @@ package ariel.az.devcode20.Adaptadores;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -26,10 +28,13 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 import ariel.az.devcode20.R;
+import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsGetMessages;
+import ariel.az.devcode20.models.ModelsMensajes;
 import ariel.az.devcode20.models.ModelsSendLikes;
+import ariel.az.devcode20.models.ModelsSendReportes;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -81,6 +86,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         private ModelsGetMessages modelsGet;
         private Dialog myDialog;
         private Stack<String> commentaryStack = new Stack<>();
+
 
         public ViewHolder( View itemView) {
             super(itemView);
@@ -227,7 +233,26 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
         private void denunciar(Integer position){
-            Toast.makeText(activity, "" + modelsGetMessages.get(position).getIdmessage().toString(), Toast.LENGTH_SHORT).show();
+            router = conexion.getApiService();
+            SharedPreferences preferences = activity.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+            ModelsSendReportes modelsSendReportes = new ModelsSendReportes(modelsGetMessages.get(position).getIdmessage());
+
+            Call<ModelsMensajes> modelsGetMessagesCall  = router.MODELS_MENSAJES_CALL(SaveDataUser.getToken(preferences),modelsSendReportes);
+            modelsGetMessagesCall.enqueue(new Callback<ModelsMensajes>() {
+                @Override
+                public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
+                    if (response.isSuccessful()){
+                        String message = response.body().getMessage();
+                        Toast.makeText(activity, "" + message, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ModelsMensajes> call, Throwable t) {
+
+                }
+            });
+            
         }
 
 

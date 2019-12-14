@@ -14,18 +14,18 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.models.ModelsReconstruir;
+import ariel.az.devcode20.models.ModelsMensajes;
 
 public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
     Activity activity;
-    ArrayList<ModelsReconstruir> modelsLikesArrays;
+    ArrayList<ModelsMensajes> modelsLikesArrays;
     OnItemClick onItemClick;
     String email;
 
 
 
-    public AdminAdapter(String email, Activity activity, ArrayList<ModelsReconstruir> modelsLikesArrays, OnItemClick onItemClick) {
+    public AdminAdapter(String email, Activity activity, ArrayList<ModelsMensajes> modelsLikesArrays, OnItemClick onItemClick) {
         this.email = email;
         this.activity = activity;
         this.modelsLikesArrays = modelsLikesArrays;
@@ -68,13 +68,9 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
         }
 
 
-        public  void data(final ModelsReconstruir modelsLikesList, final OnItemClick onItemClick){
+        public  void data(final ModelsMensajes modelsLikesList, final OnItemClick onItemClick){
             //the magic
-            title.setText(modelsLikesList.getModelsGetMessages().getMessageuser());
-            if (modelsLikesList.getIdlike() > 0){
-                photoLike.setVisibility(View.VISIBLE);
-                countLike.setText(modelsLikesList.getModelsGetMessages().getLikepublication().toString());
-            }
+
 
 
 
@@ -101,6 +97,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
     }
 
     public interface OnItemClick{
-        void ItemClick(ModelsReconstruir modelsGetMessages, int position);
+        void ItemClick(ModelsMensajes modelsGetMessages, int position);
     }
 }

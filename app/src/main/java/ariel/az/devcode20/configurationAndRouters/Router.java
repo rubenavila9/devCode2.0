@@ -5,7 +5,8 @@ import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsCreateLikes;
 import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
-import ariel.az.devcode20.models.ModelsReconstrour;
+import ariel.az.devcode20.models.ModelsMensajes;
+import ariel.az.devcode20.models.ModelsSendReportes;
 import ariel.az.devcode20.models.ModelsListMessages;
 import ariel.az.devcode20.models.ModelsRegister;
 import ariel.az.devcode20.models.ModelsUser;
@@ -85,14 +86,20 @@ public interface Router {
     Call<ModelsSendLikes> updateMessagesCall(@Body ModelsSendLikes modelsCreateMessages);
 
     //----------------------------------obtener los likes (revision)-------------------------------------------------------------------
-    @GET("likes/getLikes")
-    Call<ModelsReconstrour> modelsLikesListCall();
+    @GET("extras/getLikes")
+    Call<ModelsSendReportes> modelsLikesListCall();
 
     //-------------------------------------envio de los likes --------------------------------------------------------------------
 
-    @POST("likes/createLikes")
-    Call<ModelsCreateLikes> MODELS_CREATE_LIKES_CALL (@Header("auto-token")String autoToken,
+    @POST("extras/createLikes")
+    Call<ModelsMensajes> MODELS_CREATE_LIKES_CALL (@Header("auto-token")String autoToken,
                                                       @Body ModelsCreateLikes modelsCreateLikes);
+
+    //--------------------------------------enviar loas denuncias-------------------------------------------------------------------------
+    @POST("extras/create/createComplemeints")
+    Call<ModelsMensajes> MODELS_MENSAJES_CALL(@Header("auto-token")String autoToken,
+                                              @Body ModelsSendReportes modelsSendReportes);
+
 
 
 

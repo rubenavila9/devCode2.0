@@ -10,13 +10,13 @@ import java.util.ArrayList;
 
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.configurationAndRouters.Router;
-import ariel.az.devcode20.models.ModelsReconstruir;
+import ariel.az.devcode20.models.ModelsMensajes;
 
 public class AdminActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Router router;
-    private ArrayList<ModelsReconstruir> modelsLikesLists;
+    private ArrayList<ModelsMensajes> modelsLikesLists;
     private SharedPreferences preferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

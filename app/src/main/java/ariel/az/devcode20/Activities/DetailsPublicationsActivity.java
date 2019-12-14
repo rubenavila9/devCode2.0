@@ -31,6 +31,7 @@ import ariel.az.devcode20.models.ModelsCreateLikes;
 import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsListMessages;
+import ariel.az.devcode20.models.ModelsMensajes;
 import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -116,6 +117,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         emailUser = getIntent().getExtras().getString("emailUser");
         roleUser= SaveDataUser.getEmailUser(preferences);
         photoUser = SaveDataUser.getImgUser(preferences);
+
         Glide.with(DetailsPublicationsActivity.this).load(photoUser).into(imgUser);
     }
 
@@ -183,17 +185,20 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
 
     private void addLike(Integer idMessage){
         ModelsCreateLikes modelsCreateLikes = new ModelsCreateLikes(idMessage);
-        Call<ModelsCreateLikes> modelsCreateLikesCall = router.MODELS_CREATE_LIKES_CALL(SaveDataUser.getToken(preferences),modelsCreateLikes);
-        modelsCreateLikesCall.enqueue(new Callback<ModelsCreateLikes>() {
+        Call<ModelsMensajes> modelsCreateLikesCall = router.MODELS_CREATE_LIKES_CALL(SaveDataUser.getToken(preferences),modelsCreateLikes);
+        modelsCreateLikesCall.enqueue(new Callback<ModelsMensajes>() {
             @Override
-            public void onResponse(Call<ModelsCreateLikes> call, Response<ModelsCreateLikes> response) {
+            public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
                 if (response.isSuccessful()){
+                    String message = response.body().getMessage();
+                    Toast.makeText(DetailsPublicationsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                     getMessagesPublications();
+
                 }
             }
 
             @Override
-            public void onFailure(Call<ModelsCreateLikes> call, Throwable t) {
+            public void onFailure(Call<ModelsMensajes> call, Throwable t) {
 
             }
         });
