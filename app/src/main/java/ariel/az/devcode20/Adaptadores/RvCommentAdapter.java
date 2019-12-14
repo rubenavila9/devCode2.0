@@ -106,6 +106,12 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                 photoLike.setVisibility(View.VISIBLE);
                 countLike.setText(modelsGetMessages.getLikepublication()+"");
             }
+
+            if (modelsGetMessages.getComplemeints() > 0){
+                photoLike.setColorFilter(Color.RED);
+            }
+
+
             linearLayoutComments.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -252,7 +258,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
                 }
             });
-            
+
         }
 
 

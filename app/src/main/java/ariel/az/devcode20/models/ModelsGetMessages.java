@@ -23,6 +23,11 @@ public class ModelsGetMessages {
     @Expose
     private Integer likepublication;
 
+    @SerializedName("complemeints")
+    @Expose
+    private Integer complemeints;
+
+
 
     @SerializedName("user")
     @Expose
@@ -52,6 +57,10 @@ public class ModelsGetMessages {
 
     public void setLikepublication(Integer likepublication) {
         this.likepublication = likepublication;
+    }
+
+    public Integer getComplemeints() {
+        return complemeints;
     }
 
     public ModelsUser getUser() {
