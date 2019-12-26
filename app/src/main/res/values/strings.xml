@@ -35,6 +35,8 @@
     <string name="no">Salir</string>
     <string name="advertencia">Esta seguro de eliminar</string>
     <string name="selecccionarNivel">Seleccione el nivel</string>
+    <string name="cancel">Cancelar</string>
+    <string name="nivel">nivel</string>
     <string-array name="nivel">
         <item>nivel 1</item>
         <item>nivel 2</item>

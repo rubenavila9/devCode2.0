@@ -1,14 +1,12 @@
 package ariel.az.devcode20.Fragmentos;
 
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -18,7 +16,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -49,7 +46,7 @@ public class perfilFragmento extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_perfilfragmento, container, false);
         preferences = this.getActivity().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        nameUser = view.findViewById(R.id.nameUser);
+        nameUser = view.findViewById(R.id.titlePublications);
         photoUser = view.findViewById(R.id.photoUser);
         emailUser = view.findViewById(R.id.emailUser);
         nameUser.setText(SaveDataUser.getEmailUser(preferences));

@@ -1,20 +1,17 @@
 package ariel.az.devcode20.models;
 
-import okhttp3.ResponseBody;
+
 
 public class ModelsPublications {
 
-    private ResponseBody responseBody;
-    private String namePublication;
-    private String descriptPublication;
-    private Integer levelSubject;
 
+    private Integer idpublication;
+    private String namepublication;
+    private String descriptpublication;
 
-    public ModelsPublications(String namePublication, String descriptPublication, Integer levelSubject) {
-        this.namePublication = namePublication;
-        this.descriptPublication = descriptPublication;
-        this.levelSubject = levelSubject;
+    public ModelsPublications(Integer idpublication, String namepublication, String descriptpublication) {
+        this.idpublication = idpublication;
+        this.namepublication = namepublication;
+        this.descriptpublication = descriptpublication;
     }
-
-
 }

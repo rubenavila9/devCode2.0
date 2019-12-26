@@ -6,6 +6,7 @@ import ariel.az.devcode20.models.ModelsCreateLikes;
 import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsMensajes;
+import ariel.az.devcode20.models.ModelsPublications;
 import ariel.az.devcode20.models.ModelsSendReportes;
 import ariel.az.devcode20.models.ModelsListMessages;
 import ariel.az.devcode20.models.ModelsRegister;
@@ -64,7 +65,7 @@ public interface Router {
 
 
     @GET("publications/home")
-    Call<ListPublications> LIST_PUBLICATIONS_CALL();
+    Call<ListPublications> obtenerPublcaciones();
 
 
     @GET("user/{id}")
@@ -73,12 +74,12 @@ public interface Router {
     //-----------------------obtener los mensajes con el id de la publicacion------------------------------
 
     @GET("messages/{idpublication}")
-    Call<ModelsListMessages> modelsListMessagesCall(@Path("idpublication")Integer id);
+    Call<ModelsListMessages> obtenerMensajesPorId(@Path("idpublication")Integer id);
 
     //------------------------------elimininar commentarios--------------------------------------------------
 
-    @DELETE("messages/{idmessage}")
-    Call<ModelsGetMessages> deleteCommentary(@Path("idmessage") int id);
+    @DELETE("messages/delete/{idmessage}")
+    Call<ModelsMensajes> eliminarComentarios(@Path("idmessage") Integer idmessage);
     //--------------------------------actualizar los likes en la table messages-------------------------------------------------
 
 
@@ -86,21 +87,27 @@ public interface Router {
     Call<ModelsSendLikes> updateMessagesCall(@Body ModelsSendLikes modelsCreateMessages);
 
     //----------------------------------obtener los likes (revision)-------------------------------------------------------------------
+
     @GET("extras/getLikes")
     Call<ModelsSendReportes> modelsLikesListCall();
 
     //-------------------------------------envio de los likes --------------------------------------------------------------------
 
     @POST("extras/createLikes")
-    Call<ModelsMensajes> MODELS_CREATE_LIKES_CALL (@Header("auto-token")String autoToken,
-                                                      @Body ModelsCreateLikes modelsCreateLikes);
+    Call<ModelsMensajes> routerEnviarLikes(@Header("auto-token")String autoToken,
+                                           @Body ModelsCreateLikes modelsCreateLikes);
 
     //--------------------------------------enviar loas denuncias-------------------------------------------------------------------------
+
     @POST("extras/create/createComplemeints")
-    Call<ModelsMensajes> MODELS_MENSAJES_CALL(@Header("auto-token")String autoToken,
-                                              @Body ModelsSendReportes modelsSendReportes);
+    Call<ModelsMensajes> routerReportarDenuncias(@Header("auto-token")String autoToken,
+                                                 @Body ModelsSendReportes modelsSendReportes);
 
+    //--------------------------------------editar las publicaciones ------------------------------------------------------------------------
 
+    @POST("publications/updatePublication")
+    Call<ModelsMensajes> routerEditarPublicaciones(@Body ModelsPublications modelsPublications);
+    //-----------------------------------------------------------------------------------------------------------------------------------
 
 
 

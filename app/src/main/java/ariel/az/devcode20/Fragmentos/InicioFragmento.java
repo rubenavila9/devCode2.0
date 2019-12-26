@@ -58,16 +58,16 @@ public class InicioFragmento extends Fragment {
         floatingAdmin = view.findViewById(R.id.floatingAdmin);
         Router router  = conexion.getApiService();
         sharedPreferences = this.getActivity().getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-        Call<ListPublications> listCall= router.LIST_PUBLICATIONS_CALL();
-        //aqui hace la consulta una consulta para obtener las publicaciones
+        Call<ListPublications> listCall= router.obtenerPublcaciones();
+        // TODO: 12/26/2019 se realiza la consulta a la base de datos para obtener todas las publicaciones 
         listCall.enqueue(new Callback<ListPublications>() {
             @Override
             public void onResponse(Call<ListPublications> call, Response<ListPublications> response) {
                 if (response.isSuccessful()){
+                    // TODO: 12/26/2019 se aplica el recycletview para prsentarlo en la pantalla principal 
                     RecyclerView recyclerView = view.findViewById(R.id.recyclerHome);
                     RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
                     recyclerView.setLayoutManager(layoutManager);
-                    //la respuesta obtenieda lo almacena para luego usarlos en el adaptor recyclerview
                     modelsPublicationsLists = response.body().getModelsPublicationsLists();
                     recyclerViewAdapter = new RecyclerViewAdapter(modelsPublicationsLists,getContext());
                     recyclerView.setAdapter(recyclerViewAdapter);
@@ -81,7 +81,9 @@ public class InicioFragmento extends Fragment {
             }
         });
 
+        
         if (SaveDataUser.getRoleUser(sharedPreferences).equals("admin")){
+            // TODO: 12/26/2019 validar el usuario para permitir el acceso a la pantalla administrador 
             floatingAdmin.setVisibility(View.VISIBLE);
             floatingAdmin.setOnClickListener(new View.OnClickListener() {
                 @Override

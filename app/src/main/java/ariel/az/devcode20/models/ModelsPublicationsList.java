@@ -23,6 +23,10 @@ public class ModelsPublicationsList {
     @Expose
     private String descriptpublication;
 
+    @SerializedName("levelsubject")
+    @Expose
+    private Integer levelSubject;
+
     @SerializedName("userIduser")
     @Expose
     private Integer userid;
@@ -45,6 +49,9 @@ public class ModelsPublicationsList {
         return descriptpublication;
     }
 
+    public Integer getLevelSubject() {
+        return levelSubject;
+    }
 
     public Integer getUserid() {
         return userid;

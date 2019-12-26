@@ -43,7 +43,8 @@
             android:drawableTint="@color/red_sky"
             android:textColor="@color/red_sky"/>
         <Button
-            android:text="@string/publicacion"
+            android:id="@+id/btnCancel"
+            android:text="@string/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/white"

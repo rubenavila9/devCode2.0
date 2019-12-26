@@ -2,7 +2,6 @@ package ariel.az.devcode20.Adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +12,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import ariel.az.devcode20.Activities.DetailsPublicationsActivity;
-import ariel.az.devcode20.configurationAndRouters.Router;
-import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsPublicationsList;
-import ariel.az.devcode20.models.ModelsUser;
 import ariel.az.devcode20.R;
 import de.hdodenhof.circleimageview.CircleImageView;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>{
 
@@ -54,15 +47,16 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CircleImageView profile_image;
-        TextView nameUser, title, publicacionUser;
+        TextView nameUser, title, publicacionUser, nivel;
         LinearLayout layoutRecyclerView;
         public ViewHolder( final View itemView) {
             super(itemView);
             profile_image = itemView.findViewById(R.id.profile_image);
-            nameUser = itemView.findViewById(R.id.nameUser);
-            publicacionUser = itemView.findViewById(R.id.publicationUser);
+            title = itemView.findViewById(R.id.titlePublications);
+            publicacionUser = itemView.findViewById(R.id.descriptionPublications);
             layoutRecyclerView = itemView.findViewById(R.id.layoutRecyclerView);
-            title = itemView.findViewById(R.id.title_publication);
+            nameUser = itemView.findViewById(R.id.nameUser);
+            nivel = itemView.findViewById(R.id.nivel);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -80,8 +74,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             });
         }
         public void dim (ModelsPublicationsList publicacion){
-            this.nameUser.setText(publicacion.getNamepublication());
+            this.title.setText(publicacion.getNamepublication());
             this.publicacionUser.setText(publicacion.getDescriptpublication());
+            this.nameUser.setText(publicacion.getIduser().getNameuser());
+            this.nivel.setText( "Nivel " + publicacion.getLevelSubject());
             Glide.with(mContext).load(publicacion.getIduser().getPhotouser()).into(profile_image);
         }
 

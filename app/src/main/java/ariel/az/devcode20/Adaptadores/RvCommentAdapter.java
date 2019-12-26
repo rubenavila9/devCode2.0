@@ -7,7 +7,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -33,7 +32,6 @@ import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsMensajes;
-import ariel.az.devcode20.models.ModelsSendLikes;
 import ariel.az.devcode20.models.ModelsSendReportes;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -194,6 +192,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
         private void deleteMessage(Integer id){
+            // TODO: 12/26/2019 verificar la eliminancion del comentario
             final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
             builder.setMessage(R.string.advertencia).setPositiveButton(R.string.si, new DialogInterface.OnClickListener() {
                 @Override
@@ -212,19 +211,22 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             builder.show();
         }
 
+
         private void deleteDatabase(final Integer id){
-            //enviar la informacion a la base de datos para la eliminacion de un comentario
+            // TODO: 12/26/2019 eliminar un mensaje
             router = conexion.getApiService();
-            Call<ModelsGetMessages> modelsGetMessagesCall = router.deleteCommentary(id);
-            modelsGetMessagesCall.enqueue(new Callback<ModelsGetMessages>() {
+            Call<ModelsMensajes> modelsGetMessagesCall = router.eliminarComentarios(id);
+            modelsGetMessagesCall.enqueue(new Callback<ModelsMensajes>() {
                 @Override
-                public void onResponse(Call<ModelsGetMessages> call, Response<ModelsGetMessages> response) {
+                public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
                     if (response.isSuccessful()){
+                        String message = response.body().getMessage();
+                        Toast.makeText(activity, "" + message, Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<ModelsGetMessages> call, Throwable t) {
+                public void onFailure(Call<ModelsMensajes> call, Throwable t) {
 
                 }
             });
@@ -239,11 +241,12 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
 
         private void denunciar(Integer position){
+            // TODO: 12/26/2019 denunciar un mensaje 
             router = conexion.getApiService();
             SharedPreferences preferences = activity.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
             ModelsSendReportes modelsSendReportes = new ModelsSendReportes(modelsGetMessages.get(position).getIdmessage());
 
-            Call<ModelsMensajes> modelsGetMessagesCall  = router.MODELS_MENSAJES_CALL(SaveDataUser.getToken(preferences),modelsSendReportes);
+            Call<ModelsMensajes> modelsGetMessagesCall  = router.routerReportarDenuncias(SaveDataUser.getToken(preferences),modelsSendReportes);
             modelsGetMessagesCall.enqueue(new Callback<ModelsMensajes>() {
                 @Override
                 public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {

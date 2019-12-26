@@ -16,18 +16,21 @@
             android:layout_weight="2"
             android:layout_marginTop="5dp"
             android:orientation="vertical"
+            android:layout_gravity="center"
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"/>
+                app:civ_border_width="2dp"
+                android:layout_marginTop="5dp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/title_publication"
+                android:id="@+id/nameUser"
                 android:gravity="center"
+                android:layout_marginTop="1dp"
                 android:text="@string/profile"/>
         </LinearLayout>
         <LinearLayout
@@ -36,21 +39,48 @@
             android:layout_weight="8"
             android:layout_marginTop="5dp"
             android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="13"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titulodelapublicacion"
+                    android:textSize="10dp" />
+                <TextView
+                    android:id="@+id/nivel"
+                    android:layout_width="0dp"
+                    android:layout_weight="2"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nivel"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/nameUser"
+                android:id="@+id/titlePublications"
                 android:textColor="@color/Black"
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/profile"
-                />
+                android:layout_marginTop="3dp"/>
+
             <TextView
-                android:id="@+id/publicationUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Publicación"
-                android:layout_marginTop="10dp"
-                />
+                android:text="@string/detallesdelapregunta"
+                android:textSize="10dp"
+                android:layout_marginTop="10dp"/>
+                <TextView
+                    android:id="@+id/descriptionPublications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Publicación"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="4dp"
+                    android:textStyle="bold"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
