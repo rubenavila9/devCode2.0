@@ -15,7 +15,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/grayWhite"
-            android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@+id/View"
             app:layout_constraintEnd_toEndOf="parent"
@@ -23,20 +22,55 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0">
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/nameUser"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/titulodelapublicacion"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="0dp"
+                    android:text="@string/titulodelapublicacion"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10"
+                    android:textSize="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/level"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/nivel"
+                    android:textSize="10dp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp">
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/nameUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/titulodelapublicacion"
+                    android:textStyle="bold"
+                    android:textColor="@color/Black"
+                    android:layout_marginTop="5dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detallesdelapregunta"
+                    android:layout_marginTop="15dp"
+                    android:textSize="10dp"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/details_publications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/detallesdelapregunta"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:textStyle="bold"/>
+            </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/details_publications"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/detallesdelapregunta"
-                android:layout_margin="10dp"/>
         </LinearLayout>
 
         <View

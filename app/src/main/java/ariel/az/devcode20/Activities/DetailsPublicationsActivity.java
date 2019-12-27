@@ -39,7 +39,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailsPublicationsActivity extends AppCompatActivity {
-    private TextView titledescription, detailsdescription;
+    private TextView titledescription, detailsdescription , nivel;
     private Button btnRespond;
     private SharedPreferences preferences;
     private CircleImageView imgUser;
@@ -58,6 +58,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         titledescription  = findViewById(R.id.nameUser);
         detailsdescription = findViewById(R.id.details_publications);
+        nivel = findViewById(R.id.level);
         btnRespond = findViewById(R.id.btnRespond);
         imgUser = findViewById(R.id.imageUser);
         postRespond = findViewById(R.id.postRespond);
@@ -120,6 +121,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
         idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
         emailUser = getIntent().getExtras().getString("emailUser");
+        nivel.setText("nivel " +  String.valueOf(getIntent().getExtras().getInt("level")));
         roleUser= SaveDataUser.getEmailUser(preferences);
         photoUser = SaveDataUser.getImgUser(preferences);
 

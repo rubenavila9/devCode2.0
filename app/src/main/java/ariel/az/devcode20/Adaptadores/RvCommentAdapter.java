@@ -30,6 +30,7 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
+import ariel.az.devcode20.models.ModelsCreateMessages;
 import ariel.az.devcode20.models.ModelsGetMessages;
 import ariel.az.devcode20.models.ModelsMensajes;
 import ariel.az.devcode20.models.ModelsSendReportes;
@@ -78,17 +79,18 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        private TextView commentaryUser, countLike;
+        private TextView commentaryUser, countLike, nameUser;
         private LinearLayout linearLayoutComments;
         private ImageView photoUserMessage, photoLike;
         private ModelsGetMessages modelsGet;
         private Dialog myDialog;
-        private Stack<String> commentaryStack = new Stack<>();
+
 
 
         public ViewHolder( View itemView) {
             super(itemView);
             commentaryUser = itemView.findViewById(R.id.commentaryUser);
+            nameUser = itemView.findViewById(R.id.nameUser);
             linearLayoutComments = itemView.findViewById(R.id.linearLayoutComments);
             photoUserMessage = itemView.findViewById(R.id.photoUserMessage);
             countLike = itemView.findViewById(R.id.countLike);
@@ -100,6 +102,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             //se coloca los datos del usuario
             commentaryUser.setText(modelsGetMessages.getMessageuser());
             Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
+
             if(modelsGetMessages.getLikepublication() > 0) {
                 photoLike.setVisibility(View.VISIBLE);
                 countLike.setText(modelsGetMessages.getLikepublication()+"");
@@ -166,29 +169,71 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
 
         }
 
-        private void editMessage(Integer id){
-            //editar mensaje
+        private void editMessage(final Integer id){
+            // TODO: 12/26/2019 el dialog para editar un comentario
             final EditText commentaryPublication;
             final TextView userCommentary;
-            Button btnUpdateCommentary;
+            Button btnUpdateCommentary, btnCancel;
             myDialog = new Dialog(activity);
             myDialog.setContentView(R.layout.dialog_commentary_design);
             myDialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
-            //obtener los campo
+            // TODO: 12/26/2019 indentificar las variables del dialog
             commentaryPublication = myDialog.findViewById(R.id.commentaryPublication);
             userCommentary = myDialog.findViewById(R.id.userCommentary);
             btnUpdateCommentary = myDialog.findViewById(R.id.btnUpdateCommentary);
+            btnCancel = myDialog.findViewById(R.id.btnCancel);
             userCommentary.setText("Está a punto de editar su comentario " + modelsGetMessages.get(id).getUser().getNameuser());
             commentaryPublication.setText(String.valueOf(modelsGetMessages.get(id).getMessageuser()));
             btnUpdateCommentary.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    commentaryStack.push(commentaryPublication.getText().toString());
+                    updateMessage(commentaryPublication.getText().toString(), modelsGetMessages.get(id).getIdmessage());
+                    myDialog.cancel();
+                }
+            });
+            btnCancel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
                     myDialog.cancel();
                 }
             });
             myDialog.show();
         }
+
+
+        private void updateMessage(String commentary,Integer idCommentary){
+            // TODO: 12/26/2019 actualizar el mensajes
+            ModelsCreateMessages modelsCreateMessages = new ModelsCreateMessages(commentary,idCommentary);
+            router = conexion.getApiService();
+            Call<ModelsMensajes> mensajesCall = router.routerActualizarComentario(modelsCreateMessages);
+            mensajesCall.enqueue(new Callback<ModelsMensajes>() {
+                @Override
+                public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
+                    if (response.isSuccessful()){
+                        String message = response.body().getMessage();
+                        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<ModelsMensajes> call, Throwable t) {
+
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         private void deleteMessage(Integer id){
@@ -231,13 +276,6 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                 }
             });
         }
-
-
-
-
-
-
-
 
 
         private void denunciar(Integer position){

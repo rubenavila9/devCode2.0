@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayoutComments"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -11,37 +12,59 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="horizontal">
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/photoUserMessage"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="40dp"
-            android:scaleType="centerCrop"
-            app:civ_border_color="#FF000000"
-            app:civ_border_width="1dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:src="@drawable/profile"/>
-        <TextView
-            android:layout_marginTop="5dp"
-            android:id="@+id/commentaryUser"
-            android:text="@string/mensajeUsuario"
-            android:layout_width="0dp"
-            android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"/>
-        <ImageView
-            android:id="@+id/imageLike"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/photoUserMessage"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:scaleType="centerCrop"
+                app:civ_border_color="#FF000000"
+                app:civ_border_width="1dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/profile"/>
+            <TextView
+                android:id="@+id/nameUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="@string/profile"/>
+        </LinearLayout>
+        <LinearLayout
             android:layout_width="0dp"
-            android:layout_weight="0.5"
-            android:layout_height="wrap_content"
-            android:visibility="invisible"
-            android:src="@drawable/ic_thumbs_up_hand_symbol"/>
-        <TextView
-            android:id="@+id/countLike"
-            android:layout_width="0dp"
-            android:layout_weight="0.3"
-            android:layout_height="wrap_content"/>
+            android:layout_weight="8"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginTop="5dp"
+                android:id="@+id/commentaryUser"
+                android:text="@string/mensajeUsuario"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_marginBottom="12dp"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/imageLike"
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_thumbs_up_hand_symbol"/>
+            <TextView
+                android:id="@+id/countLike"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_marginBottom="5dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
     </LinearLayout>
     <View
         android:layout_width="match_parent"

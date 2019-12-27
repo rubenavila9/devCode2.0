@@ -84,7 +84,7 @@ public interface Router {
 
 
     @POST("messages/update")
-    Call<ModelsSendLikes> updateMessagesCall(@Body ModelsSendLikes modelsCreateMessages);
+    Call<ModelsMensajes> routerActualizarComentario(@Body ModelsCreateMessages modelsCreateMessages);
 
     //----------------------------------obtener los likes (revision)-------------------------------------------------------------------
 

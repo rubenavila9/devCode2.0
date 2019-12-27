@@ -46,9 +46,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        CircleImageView profile_image;
-        TextView nameUser, title, publicacionUser, nivel;
-        LinearLayout layoutRecyclerView;
+        private CircleImageView profile_image;
+        private TextView nameUser, title, publicacionUser, nivel;
+        private LinearLayout layoutRecyclerView;
         public ViewHolder( final View itemView) {
             super(itemView);
             profile_image = itemView.findViewById(R.id.profile_image);
@@ -69,6 +69,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     intent.putExtra("detailsPublications",publicacion.get(position).getDescriptpublication());
                     intent.putExtra("idUser",publicacion.get(position).getUserid());
                     intent.putExtra("emailUser",publicacion.get(position).getIduser().getEmailuser());
+                    intent.putExtra("level",publicacion.get(position).getLevelSubject());
                     mContext.startActivity(intent);
                 }
             });
