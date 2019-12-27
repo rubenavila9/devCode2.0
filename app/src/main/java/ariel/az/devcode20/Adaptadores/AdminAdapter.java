@@ -24,16 +24,18 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
     Activity activity;
     ArrayList<ArrayListDenuncias> arrayListDenuncias;
-    OnItemClick onItemClick;
 
 
+    public ArrayList<ArrayListDenuncias> getArrayListDenuncias() {
+        return arrayListDenuncias;
+    }
 
-
-    public AdminAdapter( Activity activity, ArrayList<ArrayListDenuncias> modelsLikesArrays, OnItemClick onItemClick) {
+    public AdminAdapter(Activity activity, ArrayList<ArrayListDenuncias> modelsLikesArrays) {
         this.activity = activity;
         this.arrayListDenuncias = modelsLikesArrays;
-        this.onItemClick = onItemClick;
     }
+
+
 
     @NonNull
     @Override
@@ -45,7 +47,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
     @Override
     public void onBindViewHolder(@NonNull Admin holder, int position) {
-        holder.data(arrayListDenuncias.get(position),onItemClick);
+        holder.data(arrayListDenuncias.get(position));
     }
 
     @Override
@@ -55,7 +57,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
 
 
-    public class Admin extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
+    public class Admin extends RecyclerView.ViewHolder {
 
         private TextView CantidadDenuncias , MensajeDenunciado, UserDenunciado;
         private ImageView profile_image_denunciado;
@@ -70,27 +72,28 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
         }
 
 
-        public  void data(final ArrayListDenuncias modelsLikesList, final OnItemClick onItemClick){
-            this.CantidadDenuncias.setText("" + String.valueOf(modelsLikesList.getLikepublications()));
+        public  void data(final ArrayListDenuncias modelsLikesList){
+            this.CantidadDenuncias.setText("" + String.valueOf(modelsLikesList.getComplemeints()));
             this.MensajeDenunciado.setText(modelsLikesList.getMessageuser());
             this.UserDenunciado.setText(modelsLikesList.getIduser().getNameuser());
             Glide.with(activity).load(modelsLikesList.getIduser().getPhotouser()).into(profile_image_denunciado);
-
-
-        }
-
-        @Override
-        public boolean onMenuItemClick(MenuItem item) {
-            return false;
-        }
-
-        @Override
-        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-
         }
     }
 
-    public interface OnItemClick{
-        void ItemClick(ArrayListDenuncias modelsGetMessages, int position);
+    public void removeItem(int position){
+        // TODO: 12/27/2019 eliminar el comentario
+        arrayListDenuncias.remove(position);
+        notifyItemRemoved(position);
     }
+
+    private void restoreItem(String item, int position){
+        // TODO: 12/27/2019 restaurar comentario
+    }
+
+
+
+
+
+
+
 }
