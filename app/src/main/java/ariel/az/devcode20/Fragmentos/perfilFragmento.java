@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import ariel.az.devcode20.Activities.LoginActivity;
 import ariel.az.devcode20.Editarperfildelusuario;
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
@@ -71,9 +72,22 @@ public class perfilFragmento extends Fragment {
                 Intent intent = new Intent(getActivity(), Editarperfildelusuario.class);
                 startActivity(intent);
                 return true;
+            case R.id.sign_out_login:
+                cerrarsesion();
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    private void cerrarsesion(){
+        // TODO: 12/26/2019 eliminar los datos del usuario sharedpreferences
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
+        getActivity().finish();
+        startActivity(new Intent(getActivity(), LoginActivity.class));
     }
 }
 

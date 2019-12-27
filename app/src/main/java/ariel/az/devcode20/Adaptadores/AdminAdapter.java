@@ -12,76 +12,70 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 import ariel.az.devcode20.R;
-import ariel.az.devcode20.models.ModelsMensajes;
+import ariel.az.devcode20.models.ArrayListDenuncias;
+
 
 public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
     Activity activity;
-    ArrayList<ModelsMensajes> modelsLikesArrays;
+    ArrayList<ArrayListDenuncias> arrayListDenuncias;
     OnItemClick onItemClick;
-    String email;
 
 
 
-    public AdminAdapter(String email, Activity activity, ArrayList<ModelsMensajes> modelsLikesArrays, OnItemClick onItemClick) {
-        this.email = email;
+
+    public AdminAdapter( Activity activity, ArrayList<ArrayListDenuncias> modelsLikesArrays, OnItemClick onItemClick) {
         this.activity = activity;
-        this.modelsLikesArrays = modelsLikesArrays;
+        this.arrayListDenuncias = modelsLikesArrays;
         this.onItemClick = onItemClick;
     }
 
     @NonNull
     @Override
     public Admin onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_comments,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_denuncias,parent,false);
         Admin admin = new Admin(view);
         return admin;
     }
 
     @Override
     public void onBindViewHolder(@NonNull Admin holder, int position) {
-        holder.data(modelsLikesArrays.get(position),onItemClick);
+        holder.data(arrayListDenuncias.get(position),onItemClick);
     }
 
     @Override
     public int getItemCount() {
-        return modelsLikesArrays.size();
+        return arrayListDenuncias.size();
     }
 
 
 
     public class Admin extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener, MenuItem.OnMenuItemClickListener {
 
-        TextView title , countLike;
-        private LinearLayout linearLayoutComments;
-        ImageView photoLike;
+        private TextView CantidadDenuncias , MensajeDenunciado, UserDenunciado;
+        private ImageView profile_image_denunciado;
 
 
         public Admin(@NonNull View itemView) {
             super(itemView);
-            title = itemView.findViewById(R.id.commentaryUser);
-            countLike = itemView.findViewById(R.id.countLike);
-            linearLayoutComments = itemView.findViewById(R.id.linearLayoutComments);
-            photoLike = itemView.findViewById(R.id.imageLike);
+            CantidadDenuncias = itemView.findViewById(R.id.CantidadDenuncias);
+            MensajeDenunciado = itemView.findViewById(R.id.MensajeDenunciado);
+            UserDenunciado = itemView.findViewById(R.id.UserDenunciado);
+            profile_image_denunciado = itemView.findViewById(R.id.profile_image_denunciado);
         }
 
 
-        public  void data(final ModelsMensajes modelsLikesList, final OnItemClick onItemClick){
-            //the magic
+        public  void data(final ArrayListDenuncias modelsLikesList, final OnItemClick onItemClick){
+            this.CantidadDenuncias.setText("" + String.valueOf(modelsLikesList.getLikepublications()));
+            this.MensajeDenunciado.setText(modelsLikesList.getMessageuser());
+            this.UserDenunciado.setText(modelsLikesList.getIduser().getNameuser());
+            Glide.with(activity).load(modelsLikesList.getIduser().getPhotouser()).into(profile_image_denunciado);
 
-
-
-
-
-
-            linearLayoutComments.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                   onItemClick.ItemClick(modelsLikesList,getAdapterPosition());
-                }
-            });
 
         }
 
@@ -97,6 +91,6 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
     }
 
     public interface OnItemClick{
-        void ItemClick(ModelsMensajes modelsGetMessages, int position);
+        void ItemClick(ArrayListDenuncias modelsGetMessages, int position);
     }
 }

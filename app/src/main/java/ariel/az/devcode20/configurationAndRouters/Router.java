@@ -1,5 +1,6 @@
 package ariel.az.devcode20.configurationAndRouters;
 
+import ariel.az.devcode20.models.ListDenuncias;
 import ariel.az.devcode20.models.ListPublications;
 import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsCreateLikes;
@@ -91,23 +92,28 @@ public interface Router {
     @GET("extras/getLikes")
     Call<ModelsSendReportes> modelsLikesListCall();
 
-    //-------------------------------------envio de los likes --------------------------------------------------------------------
-
+    //-------------------------------------envio de los likes ------------------------------------------
     @POST("extras/createLikes")
     Call<ModelsMensajes> routerEnviarLikes(@Header("auto-token")String autoToken,
                                            @Body ModelsCreateLikes modelsCreateLikes);
 
-    //--------------------------------------enviar loas denuncias-------------------------------------------------------------------------
+    //--------------------------------------enviar loas denuncias---------------------------------------
 
     @POST("extras/create/createComplemeints")
     Call<ModelsMensajes> routerReportarDenuncias(@Header("auto-token")String autoToken,
                                                  @Body ModelsSendReportes modelsSendReportes);
 
-    //--------------------------------------editar las publicaciones ------------------------------------------------------------------------
+    //--------------------------------------editar las publicaciones -------------------------------------
 
     @POST("publications/updatePublication")
     Call<ModelsMensajes> routerEditarPublicaciones(@Body ModelsPublications modelsPublications);
-    //-----------------------------------------------------------------------------------------------------------------------------------
+
+    //-----------------------------------------------obtener las denuncias--------------------------------
+
+    @GET("extras/getAllComplemeint")
+    Call<ListDenuncias> routerDenuncias();
+
+    //-----------------------------------------------------------------------------------------------------
 
 
 

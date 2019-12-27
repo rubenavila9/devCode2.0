@@ -31,13 +31,14 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
         preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         if (!TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
             startActivity(new Intent(this,Principal.class));
         }
-        router = conexion.getApiService();
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        router = conexion.getApiService();
         ButtonLogin = findViewById(R.id.btnEntry);
         ButtonRegister = findViewById(R.id.btnRegister);
         email = findViewById(R.id.email);
@@ -58,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public  void login(final String email, final String pass){
-
+        // TODO: 12/26/2019 iniciar session  
         ModelLogin login = new ModelLogin(email,pass);
         Call<Token> tokenCall = router.login(login);
         tokenCall.enqueue(new Callback<Token>() {
@@ -80,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void getPersonalData(final String token){
+        // TODO: 12/26/2019 obtener la informacion del usuario logueado 
         Call<ModelsUser> modelsUserCall = router.setSecret(token);
         modelsUserCall.enqueue(new Callback<ModelsUser>() {
             @Override
@@ -91,7 +93,6 @@ public class LoginActivity extends AppCompatActivity {
                     String photoUser = response.body().getPhotouser();
                     saveSharepreferences(idUser,token,roleUser,emailUser,photoUser);
                     Intent intent = new Intent(LoginActivity.this,Principal.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
             }
