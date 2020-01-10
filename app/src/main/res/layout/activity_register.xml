@@ -64,8 +64,17 @@
         android:layout_alignParentRight="true"
         android:layout_marginBottom="15dp"
         android:layout_marginRight="15dp"/>
-
-
-
-
+    <ProgressBar
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_alignTop="@+id/btnRegister"
+            android:layout_marginTop="-0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_alignBottom="@+id/btnRegister"
+            android:layout_marginEnd="0dp"
+            android:layout_alignEnd="@+id/btnRegister"
+            android:layout_marginStart="0dp"
+            android:layout_alignStart="@+id/btnRegister"/>
 </RelativeLayout>

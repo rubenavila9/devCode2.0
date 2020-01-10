@@ -2,6 +2,7 @@ package ariel.az.devcode20.Activities;
 
 import android.content.pm.PackageManager;
 import android.util.Patterns;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -11,12 +12,6 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.io.File;
 import java.net.URI;
@@ -50,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
     MultipartBody.Part procfile;
     RequestBody email, password , roleUser , nameUser;
     private static final int PReqCode = 2 ;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -60,6 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
         passRegister = findViewById(R.id.passRegister);
         nameRegister = findViewById(R.id.nameRegister);
         btnRegister = findViewById(R.id.btnRegister);
+        progressBar = findViewById(R.id.progressBar);
         spinnerTypeUser = findViewById(R.id.spinnerTypeUser);
 
         typeUser = new ArrayList<>();
@@ -179,7 +176,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
 
 
-
+            btnRegister.setVisibility(View.INVISIBLE);
             router = conexion.getApiService();
             Call<ModelsMensajes> modelsMensajesCall = router.routerCrearCuenta(procfile,nameUser,email,password,roleUser);
             modelsMensajesCall.enqueue(new Callback<ModelsMensajes>() {
