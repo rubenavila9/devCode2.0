@@ -3,6 +3,7 @@
     <string name="password">Contraseña</string>
     <string name="login">Iniciar Sesión</string>
     <string name="email">Correo electrónico</string>
+    <string name="name">Nombre</string>
     <string name="register">Registrarse</string>
     <string name="volver">Editar</string>
     <string name="button_register">Register</string>

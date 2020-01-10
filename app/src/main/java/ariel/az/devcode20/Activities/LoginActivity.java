@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         ButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(email.getText().toString(),pass.getText().toString());
+                login(email.getText().toString().trim(),pass.getText().toString().trim());
             }
         });
     }
@@ -69,7 +69,6 @@ public class LoginActivity extends AppCompatActivity {
                     //obtiene el json que me devuelte el backend
                     String token = response.body().getAuthToken();
                     getPersonalData(token);
-
                 }
             }
             @Override
@@ -103,7 +102,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void saveSharepreferences(Integer idUser,String token,String roleUser,String emailUser, String photoUser){
-        //guardar el token
+        //TODO GUARDAR LOS DATOS EN EL SHAREPREFERENCES
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("idUser",idUser);
         editor.putString("tokenUser", token);

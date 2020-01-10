@@ -51,6 +51,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private RvCommentAdapter commentAdapter;
     private String roleUser, photoUser, emailUser;
     private Dialog myDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

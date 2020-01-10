@@ -14,6 +14,7 @@ import ariel.az.devcode20.models.ModelsRegister;
 import ariel.az.devcode20.models.ModelsUser;
 import ariel.az.devcode20.models.Token;
 import ariel.az.devcode20.models.ModelsSendLikes;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -36,28 +37,14 @@ public interface Router {
 
 
     //----------------------crear cuenta de usuario----------------
-
     @Multipart
-    @POST("user/test")
-    Call<ModelsRegister> updateUser(@Part("photo") RequestBody photo,
-                                    @Part("description") RequestBody description);
-
-
-    /*@Multipart
-    @POST("user/test")
-    Call<Object> modelsRegisterCall(
-            @Part("nameUser") RequestBody nameUser,
-            @Part("emailUser") RequestBody emailUser,
-            @Part("roleUser") RequestBody roleUser,
-            @Part("passUser") RequestBody passUser);*/
-
-
-
-   /* @Multipart
     @POST("user/create")
-    Call<ModelsRegister> MODELS_REGISTER_CALL(@Part MultipartBody.Part photo,
-                                              @Part ModelsRegister modelsRegister);
-*/
+    Call<ModelsMensajes> routerCrearCuenta( @Part MultipartBody.Part photo,
+                                            @Part("nameUser") RequestBody  nameUser,
+                                            @Part("emailUser") RequestBody emailUser,
+                                            @Part("passUser") RequestBody passUser,
+                                            @Part("roleUser") RequestBody roleUser);
+
 
 
 
@@ -130,6 +117,9 @@ public interface Router {
 
 
 
+
+
+    // TODO: 12/27/2019 ruta para la creacion del mensaje
     @POST("messages/create")
     Call<ModelsCreateMessages> createMessages (@Header("auto-token")String autoToken,
                                                   @Body ModelsCreateMessages modelsCreateMessages);

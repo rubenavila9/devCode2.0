@@ -6,6 +6,8 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import java.util.concurrent.TimeUnit;
+
 public class conexion {
     //confiracion de conecion no tocar!!
     private static String BASE_URL = "http://18.191.30.52:1000/dev/";
@@ -20,7 +22,10 @@ public class conexion {
     }
 
     private static OkHttpClient getClient() {
-        OkHttpClient.Builder builderClientHttp = new OkHttpClient().newBuilder();
+        OkHttpClient.Builder builderClientHttp = new OkHttpClient().newBuilder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60,TimeUnit.SECONDS)
+                .writeTimeout(69,TimeUnit.SECONDS);
         // Show HTTPS logs in dev mode
         if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
