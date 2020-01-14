@@ -77,7 +77,7 @@ public class publicacionFragmento extends Fragment {
         buttonpublicacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(),"la publicacion ha sido subida",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(),"La publicación ha sido subida",Toast.LENGTH_SHORT).show();
             }
         });
         return view;
