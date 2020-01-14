@@ -14,9 +14,7 @@ import android.util.Log;
 import android.view.View;
 
 import java.io.File;
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.jar.Manifest;
 import java.util.regex.Pattern;
 
 import androidx.core.app.ActivityCompat;
@@ -25,14 +23,12 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsMensajes;
-import ariel.az.devcode20.models.ModelsRegister;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.http.Multipart;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -93,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                register();
+                checkFieldsRegister();
             }
         });
     }
@@ -102,7 +98,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
-    private void register() {
+    private void checkFieldsRegister() {
         //TODO VALIDAR QUE TOODO LOS CAMPOS HAN SIDO AGREGADOS
         if (type == null || type == typeUser.get(0) || !email(emailRegister.getText().toString().trim())
                 || TextUtils.isEmpty(passRegister.getText().toString().trim()) || TextUtils.isEmpty(nameRegister.getText().toString().trim())){

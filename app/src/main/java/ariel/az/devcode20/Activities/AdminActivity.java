@@ -7,12 +7,7 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.google.android.material.snackbar.Snackbar;
 
@@ -43,12 +38,12 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         linearLayoutAdmin = findViewById(R.id.linearLayoutAdmin);
-        obtenerDenuncias();
+        getReport();
 
     }
     
     
-    private void obtenerDenuncias(){
+    private void getReport(){
         // TODO: 12/27/2019 obtener las denuncias de los usuarios
         router = conexion.getApiService();
         Call<ListDenuncias> listDenunciasCall = router.routerDenuncias();
