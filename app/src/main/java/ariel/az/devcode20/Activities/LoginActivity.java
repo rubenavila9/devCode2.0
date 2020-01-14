@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +16,6 @@ import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsUser;
 import ariel.az.devcode20.models.Token;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,13 +51,24 @@ public class LoginActivity extends AppCompatActivity {
         ButtonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                login(email.getText().toString().trim(),pass.getText().toString().trim());
+                checkFields(email.getText().toString().trim(),pass.getText().toString().trim());
             }
         });
     }
 
-    public  void login(final String email, final String pass){
-        // TODO: 12/26/2019 iniciar session  
+    private void checkFields(final String email, final String pass){
+        //TODO VALIDAR CAMPOS
+        if(TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)){
+            Toast.makeText(this, "Llene campos!", Toast.LENGTH_SHORT).show();
+        }else {
+            getLogin(email,pass);
+        }
+    }
+
+
+
+    private  void getLogin(final String email, final String pass){
+        // TODO: 12/26/2019 iniciar session
         ModelLogin login = new ModelLogin(email,pass);
         Call<Token> tokenCall = router.login(login);
         tokenCall.enqueue(new Callback<Token>() {
