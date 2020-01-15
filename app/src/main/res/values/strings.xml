@@ -41,6 +41,7 @@
     <string name="tituloDenuncia">Mensaje denunciado</string>
     <string name="CantidadDenuncia">Cantidad de denuncias</string>
     <string name="denunciasAdmin">Denuncias Globales</string>
+    <string name="sendde">Enviar denuncia</string>
     <string-array name="nivel">
         <item>nivel 1</item>
         <item>nivel 2</item>
@@ -53,4 +54,12 @@
         <item>extras</item>
     </string-array>
 
+    <string-array name="selecionaaccion">
+        /////No recuerdo cuales denuncias habian que poner xd
+        <item>nivel 1</item>
+        <item>nivel 2</item>
+        <item>nivel 3</item>
+        <item>nivel 4</item>
+    </string-array>
+    <string name="accion">Seleciona accion de denuncia</string>
 </resources>
