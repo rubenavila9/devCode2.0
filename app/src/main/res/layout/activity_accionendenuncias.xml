@@ -10,8 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-
+        android:layout_height="290dp"
         android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -30,57 +29,42 @@
             android:layout_marginTop="25dp"
             android:text="Ricardo Gabriel Lugo Sánchez"
             android:textSize="22sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/correo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:text="correo: ricardogabriel759@gmail.com"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/puntos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:text="Cantidad de puntos: 4"
-            android:textSize="22sp"
-            android:textStyle="bold" />
 
-        <com.tiper.MaterialSpinner
-            android:id="@+id/selecionaaccioon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="30dp"
-            android:hint="@string/accion"
-            app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-            app:spinnerMode="dropdown" />
-
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnsndde"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/botonlogin"
-        android:hint="@string/sendde"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.746" />
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="210dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp">
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Correo:" />
+
+            <TextView
+                android:id="@+id/emailUser"
+                android:layout_width="286dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="4"
+                android:text="ricardogabriel759@gmail.com"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 </LinearLayout>
