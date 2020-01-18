@@ -48,7 +48,7 @@
             android:label="@string/register">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.LoginActivity" />
+                android:value=".Activities.Principal" />
         </activity>
     </application>
 
