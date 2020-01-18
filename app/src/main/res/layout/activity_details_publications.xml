@@ -1,115 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
+<RelativeLayout
+        android:id="@+id/linePrincipal"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+        android:orientation="vertical"
     tools:context=".Activities.DetailsPublicationsActivity">
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/linearLayoutSendData"
+            android:layout_marginBottom="10dp">
+        <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:id="@+id/linearLayoutDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/grayWhite"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/linearLayoutDetails"
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="vertical"
+                              android:layout_height="wrap_content">
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp">
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="0dp"
+                                android:text="@string/titulodelapublicacion"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="10"
+                                android:textSize="10dp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/level"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/nivel"
+                                android:textSize="10dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="10dp">
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/nameUser"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/titulodelapublicacion"
+                                android:textStyle="bold"
+                                android:textColor="@color/Black"
+                                android:layout_marginTop="5dp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/detallesdelapregunta"
+                                android:layout_marginTop="15dp"
+                                android:textSize="10dp"/>
+                        <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/details_publications"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/detallesdelapregunta"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="10dp"
+                                android:textStyle="bold"/>
+                    </LinearLayout>
+                </LinearLayout>
+                <View android:layout_width="match_parent"
+                      android:layout_height="0.4dp"
+                android:background="@color/intro_title_color"/>
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvCommentary"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+    <LinearLayout
+            android:id="@+id/linearLayoutSendData"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/grayWhite"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@+id/View"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="0dp"
-                    android:text="@string/titulodelapublicacion"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="10"
-                    android:textSize="10dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/level"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/nivel"
-                    android:textSize="10dp"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="10dp">
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/nameUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/titulodelapublicacion"
-                    android:textStyle="bold"
-                    android:textColor="@color/Black"
-                    android:layout_marginTop="5dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/detallesdelapregunta"
-                    android:layout_marginTop="15dp"
-                    android:textSize="10dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/details_publications"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/detallesdelapregunta"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:textStyle="bold"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/View"
-            android:layout_width="match_parent"
-            android:layout_height="0.4dp"
-            android:layout_marginBottom="20dp"
-            android:background="@color/intro_title_color"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutDetails" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal"
             android:gravity="center"
-            app:layout_constraintBottom_toTopOf="@+id/rvCommentary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/View">
+            android:layout_alignParentBottom="true">
 
-            <de.hdodenhof.circleimageview.CircleImageView
+        <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/imageUser"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"/>
 
-            <EditText
+        <EditText
                 android:id="@+id/postRespond"
                 android:layout_width="0dp"
                 android:layout_gravity="bottom"
                 android:layout_height="wrap_content"
-                android:layout_weight="3" />
+                android:layout_weight="3"/>
 
-            <Button
+        <Button
                 android:id="@+id/btnRespond"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,18 +123,9 @@
                 android:drawableTint="@color/colorPrimary"
                 android:text="@string/publicar"
                 android:layout_marginBottom="5dp"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
+                android:textColor="@color/colorPrimary"/>
+    </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCommentary"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            app:layout_constraintVertical_bias="0.13" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

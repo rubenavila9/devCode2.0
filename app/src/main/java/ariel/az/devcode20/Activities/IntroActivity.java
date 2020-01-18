@@ -44,7 +44,7 @@ public class IntroActivity extends AppCompatActivity {
         // is about
 
         if(restorePrefData()){
-            Intent inicioFragmento = new Intent(IntroActivity.this,LoginActivity.class);
+            Intent inicioFragmento = new Intent(IntroActivity.this,Principal.class);
             startActivity(inicioFragmento);
             finish();
         }
@@ -67,6 +67,7 @@ public class IntroActivity extends AppCompatActivity {
         mList.add(new ScreenItem("Información Compartida", "Módulo de una biblioteca virtual. ",R.drawable.imga));
         mList.add(new ScreenItem("Publicaciones", "Una nueva forma de compartir tus conocimientos.",R.drawable.imgc));
         mList.add(new ScreenItem("Comenta lo que piensas", "Has conocer tu opinion a los demás.",R.drawable.imgb));
+        mList.add(new ScreenItem("Gana puntos para tus materias","intercambia tus puntos por notas",R.drawable.coin));
         //setup viewpager
         screenPager = findViewById(R.id.screen_viewpager);
         introViewPagerAdapter = new IntroViewPagerAdapter(this,mList);
@@ -82,8 +83,6 @@ public class IntroActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 position = screenPager.getCurrentItem();
                 if (position < mList.size()){
                 position ++;
@@ -130,7 +129,7 @@ public class IntroActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //open main activity
-                Intent inicioFragmento = new Intent(IntroActivity.this, LoginActivity.class);
+                Intent inicioFragmento = new Intent(IntroActivity.this, Principal.class);
                 startActivity(inicioFragmento);
 
                 savePrefsData();

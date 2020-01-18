@@ -14,6 +14,7 @@ import java.util.List;
 
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.models.ScreenItem;
+import com.bumptech.glide.Glide;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
 
@@ -34,10 +35,9 @@ public class IntroViewPagerAdapter extends PagerAdapter {
         ImageView imageSlide = layoutScreen.findViewById(R.id.intro_img);
         TextView  title = layoutScreen.findViewById(R.id.intro_title);
         TextView description = layoutScreen.findViewById(R.id.intro_description);
-
         title.setText(mListScreen.get(position).getTitle());
         description.setText(mListScreen.get(position).getDescription());
-        imageSlide.setImageResource(mListScreen.get(position).getScreenImg());
+        Glide.with(mContext).load(mListScreen.get(position).getScreenImg()).into(imageSlide);
 
         container.addView(layoutScreen);
 

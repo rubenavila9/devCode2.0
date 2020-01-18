@@ -34,12 +34,15 @@
         </activity>
 
         <activity android:name=".Activities.Principal" android:windowSoftInputMode="adjustPan"/>
+
         <activity android:name=".Activities.LoginActivity" android:noHistory="true" android:label="@string/login"/>
+
         <activity android:name=".Editarperfildelusuario" />
+
         <activity android:name=".Activities.RegisterActivity" android:label="@string/register">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".Activities.LoginActivity" />
+                    android:value=".Activities.Principal" />
         </activity>
     </application>
 

@@ -50,9 +50,8 @@ public class perfilFragmento extends Fragment {
         nameUser = view.findViewById(R.id.titlePublications);
         photoUser = view.findViewById(R.id.photoUser);
         emailUser = view.findViewById(R.id.emailUser);
-        nameUser.setText(SaveDataUser.getEmailUser(preferences));
+        nameUser.setText(SaveDataUser.getRoleUser(preferences));
         emailUser.setText(SaveDataUser.getEmailUser(preferences));
-
         Glide.with(this.getActivity()).load(SaveDataUser.getImgUser(preferences)).into(photoUser);
         return  view;
     }

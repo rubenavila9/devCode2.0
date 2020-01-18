@@ -10,7 +10,7 @@
     <string name="confirm_password">Confirm password</string>
     <string name="cedula">ID</string>
     <string name="password_register">Password</string>
-
+    <string name="lookingForLevel">Buscar por Nivel</string>
     <string name="cambiarcontraseña">Ingrese nueva contraseña</string>
     <string name="cambiarcorreo">Ingrese nuevo correo</string>
     <string name="cambiarntelefono">Ingrese nuevo número de teléfono</string>
@@ -42,14 +42,15 @@
     <string name="CantidadDenuncia">Cantidad de denuncias</string>
     <string name="denunciasAdmin">Denuncias Globales</string>
     <string-array name="nivel">
-        <item>nivel 1</item>
-        <item>nivel 2</item>
-        <item>nivel 3</item>
-        <item>nivel 4</item>
-        <item>nivel 5</item>
-        <item>nivel 6</item>
-        <item>nivel 7</item>
-        <item>nivel 9</item>
+        <item>Nivel 1</item>
+        <item>Nivel 2</item>
+        <item>Nivel 3</item>
+        <item>Nivel 4</item>
+        <item>Nivel 5</item>
+        <item>Nivel 6</item>
+        <item>Nivel 7</item>
+        <item>Nivel 8</item>
+        <item>Nivel 9</item>
         <item>extras</item>
     </string-array>
 

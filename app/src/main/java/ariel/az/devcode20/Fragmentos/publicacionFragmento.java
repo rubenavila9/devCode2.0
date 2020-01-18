@@ -46,8 +46,7 @@ public class publicacionFragmento extends Fragment {
         Button buttonpublicacion = view.findViewById(R.id.buttonpublication);
         materialSpinner = view.findViewById(R.id.material_spinner);
 
-        nivels = new ArrayList<>();
-        nivels.add("ok");
+
 
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(),R.array.nivel,android.R.layout.simple_list_item_1);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

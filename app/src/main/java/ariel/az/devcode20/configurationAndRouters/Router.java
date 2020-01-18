@@ -45,10 +45,6 @@ public interface Router {
                                             @Part("passUser") RequestBody passUser,
                                             @Part("roleUser") RequestBody roleUser);
 
-
-
-
-
     //---------------------obtener todas las publicaciones-------------------
 
 
@@ -100,9 +96,9 @@ public interface Router {
     @GET("extras/getAllComplemeint")
     Call<ListDenuncias> routerDenuncias();
 
-    //-----------------------------------------------------------------------------------------------------
-
-
+    //-------------------------------------------------------buscar publicaciones con el id---------------------------------------
+    @GET("publications/{levelsubject}")
+    Call<ListPublications> obtenerPublicacionesId(@Path("levelsubject") Integer levelsubject);
 
 
 

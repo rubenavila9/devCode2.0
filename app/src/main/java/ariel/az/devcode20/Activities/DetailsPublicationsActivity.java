@@ -1,5 +1,8 @@
 package ariel.az.devcode20.Activities;
 
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -12,11 +15,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 
@@ -51,6 +49,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private RvCommentAdapter commentAdapter;
     private String roleUser, photoUser, emailUser;
     private Dialog myDialog;
+    private LinearLayout linearLayoutSendData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +62,14 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         btnRespond = findViewById(R.id.btnRespond);
         imgUser = findViewById(R.id.imageUser);
         postRespond = findViewById(R.id.postRespond);
+        linearLayoutSendData = findViewById(R.id.linearLayoutSendData);
         getData();
         router = conexion.getApiService();
         getMessagesPublications();
+
+        if (checkToken()){
+            linearLayoutSendData.setVisibility(View.INVISIBLE);
+        }
 
         btnRespond.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +78,6 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                 if (messageUser.isEmpty()){
                     Toast.makeText(DetailsPublicationsActivity.this, "escribe algo", Toast.LENGTH_SHORT).show();
                 }
-
                 ModelsCreateMessages modelsCreateMessages = new ModelsCreateMessages(messageUser,idPublication);
                 Call<ModelsCreateMessages> modelsCreateMessagesCall = router.createMessages(SaveDataUser.getToken(preferences),modelsCreateMessages);
                 modelsCreateMessagesCall.enqueue(new Callback<ModelsCreateMessages>() {
@@ -91,6 +94,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
 
                     }
                 });
+
+
             }
         });
 
@@ -102,6 +107,10 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         if (emailUser.equals(SaveDataUser.getEmailUser(preferences))){
             getMenuInflater().inflate(R.menu.edit_publications,menu);
         }
+
+        if (TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
+            getMenuInflater().inflate(R.menu.menuregister,menu);
+        }
         return true;
     }
 
@@ -110,6 +119,9 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         switch (item.getItemId()){
             case R.id.changeComment:
                 showEdit();
+                return true;
+            case  R.id.session:
+                intentLogin();
                 return true;
         }
 
@@ -143,8 +155,13 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
                     commentAdapter = new RvCommentAdapter(DetailsPublicationsActivity.this, roleUser, idPublication,modelsGetMessages, new RvCommentAdapter.OnItemClickListener() {
                         @Override
                         public void OnItemClick(ModelsGetMessages modelsGetMessages, int position) {
-                            addLike(modelsGetMessages.getIdmessage());
-                            commentAdapter.notifyItemChanged(position);
+                            if (!checkToken()){
+                                addLike(modelsGetMessages.getIdmessage());
+                                commentAdapter.notifyItemChanged(position);
+                            }else {
+                                intentLogin();
+                            }
+
                         }
                     });
                     rvComment.setLayoutManager(layoutManager);
@@ -246,6 +263,18 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         }
     }
 
+
+    private boolean checkToken(){
+        if (TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
+            btnRespond.setTextColor(Color.parseColor("#A5A5A5"));
+            return true;
+        }
+        return false;
+    }
+
+    private void intentLogin(){
+        startActivity(new Intent(DetailsPublicationsActivity.this,LoginActivity.class));
+    }
 
 
 }

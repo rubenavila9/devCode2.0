@@ -5,8 +5,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.text.TextUtils;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
@@ -22,6 +24,7 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.recyclerview.widget.RecyclerView;
+import ariel.az.devcode20.Activities.LoginActivity;
 import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.Stack;
@@ -84,6 +87,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         private ImageView photoUserMessage, photoLike;
         private ModelsGetMessages modelsGet;
         private Dialog myDialog;
+        SharedPreferences preferences = activity.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
 
 
 
@@ -95,22 +99,33 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
             photoUserMessage = itemView.findViewById(R.id.photoUserMessage);
             countLike = itemView.findViewById(R.id.countLike);
             photoLike = itemView.findViewById(R.id.imageLike);
-            itemView.setOnCreateContextMenuListener(this);
+            if (!TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
+                itemView.setOnCreateContextMenuListener(this);
+            }
         }
+
+
 
         public void setInformation(final ModelsGetMessages modelsGetMessages, final OnItemClickListener onItemClickListener){
             //se coloca los datos del usuario
             commentaryUser.setText(modelsGetMessages.getMessageuser());
             Glide.with(activity).load(modelsGetMessages.getUser().getPhotouser()).into(photoUserMessage);
 
-            if(modelsGetMessages.getLikepublication() > 0) {
-                photoLike.setVisibility(View.VISIBLE);
-                countLike.setText(modelsGetMessages.getLikepublication()+"");
+            if (!TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
+                if(modelsGetMessages.getLikepublication() > 0) {
+                    photoLike.setVisibility(View.VISIBLE);
+                    countLike.setText(modelsGetMessages.getLikepublication()+"");
+                }
+
+                if (modelsGetMessages.getComplemeints() > 0){
+                    photoLike.setColorFilter(Color.RED);
+                }
+            }else {
+                photoLike.setVisibility(View.INVISIBLE);
+                countLike.setVisibility(View.INVISIBLE);
             }
 
-            if (modelsGetMessages.getComplemeints() > 0){
-                photoLike.setColorFilter(Color.RED);
-            }
+
 
 
             linearLayoutComments.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +135,7 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                     }
                 });
         }
+
 
 
 
@@ -223,19 +239,6 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         private void deleteMessage(Integer id){
             // TODO: 12/26/2019 verificar la eliminancion del comentario
             final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
@@ -281,24 +284,28 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
         private void denunciar(Integer position){
             // TODO: 12/26/2019 denunciar un mensaje 
             router = conexion.getApiService();
-            SharedPreferences preferences = activity.getSharedPreferences("Preferences", Context.MODE_PRIVATE);
-            ModelsSendReportes modelsSendReportes = new ModelsSendReportes(modelsGetMessages.get(position).getIdmessage());
 
-            Call<ModelsMensajes> modelsGetMessagesCall  = router.routerReportarDenuncias(SaveDataUser.getToken(preferences),modelsSendReportes);
-            modelsGetMessagesCall.enqueue(new Callback<ModelsMensajes>() {
-                @Override
-                public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
-                    if (response.isSuccessful()){
-                        String message = response.body().getMessage();
-                        Toast.makeText(activity, "" + message, Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
+                activity.startActivity(new Intent(activity , LoginActivity.class));
+            }else {
+                ModelsSendReportes modelsSendReportes = new ModelsSendReportes(modelsGetMessages.get(position).getIdmessage());
+                Call<ModelsMensajes> modelsGetMessagesCall  = router.routerReportarDenuncias(SaveDataUser.getToken(preferences),modelsSendReportes);
+                modelsGetMessagesCall.enqueue(new Callback<ModelsMensajes>() {
+                    @Override
+                    public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {
+                        if (response.isSuccessful()){
+                            String message = response.body().getMessage();
+                            Toast.makeText(activity, "" + message, Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
 
-                @Override
-                public void onFailure(Call<ModelsMensajes> call, Throwable t) {
+                    @Override
+                    public void onFailure(Call<ModelsMensajes> call, Throwable t) {
 
-                }
-            });
+                    }
+                });
+            }
+
 
         }
 
