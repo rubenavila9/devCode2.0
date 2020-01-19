@@ -44,6 +44,8 @@
     <string name="sendde">Enviar denuncia</string>
     <string name="points">Mis puntos</string>
     <string name="quantityLikes">Likes faltantes</string>
+    <string name="seleciona">Seleciona</string>
+    <string name="enviardenuncia">ENVIAR DENUNCIA</string>
     <string-array name="nivel">
         <item>Nivel 1</item>
         <item>Nivel 2</item>
