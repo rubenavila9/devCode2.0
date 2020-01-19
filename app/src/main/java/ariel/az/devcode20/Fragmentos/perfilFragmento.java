@@ -17,6 +17,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import ariel.az.devcode20.configurationAndRouters.Router;
+import ariel.az.devcode20.configurationAndRouters.conexion;
+import ariel.az.devcode20.models.ModelsPoints;
 import com.bumptech.glide.Glide;
 
 import ariel.az.devcode20.Activities.LoginActivity;
@@ -24,6 +27,9 @@ import ariel.az.devcode20.Editarperfildelusuario;
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,9 +37,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class perfilFragmento extends Fragment {
 
 
-    private TextView nameUser, emailUser;
+    private TextView nameUser, emailUser, numPoints, likes, roleUser;
     private SharedPreferences preferences;
     private CircleImageView photoUser;
+    private Router router;
+    private Integer cantLikes= 25;
 
     public perfilFragmento() {
         // Required empty public constructor
@@ -50,9 +58,31 @@ public class perfilFragmento extends Fragment {
         nameUser = view.findViewById(R.id.titlePublications);
         photoUser = view.findViewById(R.id.photoUser);
         emailUser = view.findViewById(R.id.emailUser);
-        nameUser.setText(SaveDataUser.getRoleUser(preferences));
+        numPoints = view.findViewById(R.id.numPoints);
+        roleUser = view.findViewById(R.id.roleUser);
+        likes = view.findViewById(R.id.likes);
+        nameUser.setText(SaveDataUser.getNameUser(preferences));
         emailUser.setText(SaveDataUser.getEmailUser(preferences));
+        router = conexion.getApiService();
+        Call<ModelsPoints> modelsPointsCall = router.setPoints(SaveDataUser.getToken(preferences));
+        modelsPointsCall.enqueue(new Callback<ModelsPoints>() {
+            @Override
+            public void onResponse(Call<ModelsPoints> call, Response<ModelsPoints> response) {
+                if (response.isSuccessful()){
+                    Integer myPoints = response.body().getPointsUsers().getCantpoint();
+                    Integer myLikes = response.body().getPointsUsers().getPointlimit();
+                    numPoints.setText(String.valueOf(myPoints));
+                    likes.setText(String.valueOf(cantLikes - myLikes));
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ModelsPoints> call, Throwable t) {
+
+            }
+        });
         Glide.with(this.getActivity()).load(SaveDataUser.getImgUser(preferences)).into(photoUser);
+        roleUser.setText(SaveDataUser.getRoleUser(preferences));
         return  view;
     }
 

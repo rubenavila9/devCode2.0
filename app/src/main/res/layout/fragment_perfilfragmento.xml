@@ -16,13 +16,12 @@
         <RelativeLayout
             android:id="@+id/RelativeLayoutProfile"
             android:layout_width="match_parent"
-            android:layout_height="280dp"
+            android:layout_height="310dp"
             android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="350dp"
-
                 android:orientation="vertical">
 
                 <de.hdodenhof.circleimageview.CircleImageView
@@ -32,22 +31,59 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="50dp"
                     android:src="@drawable/ic_account_circle_black_24dp" />
-
                 <TextView
-                    android:id="@+id/titlePublications"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="25dp"
-                    android:text="Ricardo Gabriel Lugo Sánchez"
-                    android:textSize="22sp"
-                    android:textStyle="bold" />
+                        android:id="@+id/titlePublications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        tools:text="Ricardo Gabriel Lugo Sánchez"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:gravity="center"
+                              android:layout_marginTop="5dp"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/quantityLikes"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"/>
+                    <TextView
+                            android:id="@+id/likes"
+                            android:layout_width="wrap_content"
+                            tools:text="num"
+                            android:textSize="22sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="match_parent"
+                              android:orientation="horizontal"
+                              android:gravity="center"
+                              android:layout_marginTop="5dp"
+                              android:layout_height="wrap_content">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/points"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:layout_height="wrap_content"/>
+                    <TextView
+                            android:id="@+id/numPoints"
+                            android:layout_width="wrap_content"
+                            tools:text="num"
+                            android:textSize="22sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"/>
+                </LinearLayout>
             </LinearLayout>
         </RelativeLayout>
         <LinearLayout
             android:layout_width="370dp"
             android:layout_height="200dp"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_gravity="center"
             android:layout_marginTop="45dp">
 
@@ -69,10 +105,33 @@
                     android:layout_weight="4"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="ricardogabriel759@gmail.com"
+                    tools:text="ricardogabriel759@gmail.com"
                     android:textColor="#fff"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold" />
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_person_black_24dp" />
+
+                <TextView
+                        android:id="@+id/roleUser"
+                        android:layout_width="0dp"
+                        android:layout_weight="4"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        tools:text="role"
+                        android:textColor="#fff"
+                        android:layout_marginLeft="10dp"
+                        android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

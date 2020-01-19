@@ -3,6 +3,8 @@ package ariel.az.devcode20.models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+
 public class ModelsUser {
 
     @SerializedName("iduser")
@@ -26,6 +28,11 @@ public class ModelsUser {
     private String photouser;
 
 
+    @SerializedName("points")
+    @Expose
+    private ArrayList<PointsUsers> points  = null;
+
+
     public Integer getIduser() {
         return iduser;
     }
@@ -44,5 +51,9 @@ public class ModelsUser {
 
     public String getPhotouser() {
         return photouser;
+    }
+
+    public ArrayList<PointsUsers> getPoints() {
+        return points;
     }
 }

@@ -26,4 +26,8 @@ public class SaveDataUser {
         return preferences.getString("imgUser", "");
     }
 
+    public static String getNameUser(SharedPreferences preferences){
+        return preferences.getString("nameUser","");
+    }
+
 }

@@ -42,6 +42,8 @@
     <string name="CantidadDenuncia">Cantidad de denuncias</string>
     <string name="denunciasAdmin">Denuncias Globales</string>
     <string name="sendde">Enviar denuncia</string>
+    <string name="points">Mis puntos</string>
+    <string name="quantityLikes">Likes faltantes</string>
     <string-array name="nivel">
         <item>Nivel 1</item>
         <item>Nivel 2</item>

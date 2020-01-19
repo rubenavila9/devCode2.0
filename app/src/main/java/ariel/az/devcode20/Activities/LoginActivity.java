@@ -1,5 +1,6 @@
 package ariel.az.devcode20.Activities;
 
+import android.util.Log;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,10 +16,13 @@ import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelLogin;
 import ariel.az.devcode20.models.ModelsUser;
+import ariel.az.devcode20.models.PointsUsers;
 import ariel.az.devcode20.models.Token;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.util.ArrayList;
 
 public class LoginActivity extends AppCompatActivity {
     private Button ButtonLogin, ButtonRegister;
@@ -89,7 +93,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     private void getPersonalData(final String token){
-        // TODO: 12/26/2019 obtener la informacion del usuario logueado 
+        // TODO: 12/26/2019 obtener la informacion del usuario logueado
+
         Call<ModelsUser> modelsUserCall = router.setSecret(token);
         modelsUserCall.enqueue(new Callback<ModelsUser>() {
             @Override
@@ -99,7 +104,10 @@ public class LoginActivity extends AppCompatActivity {
                     String roleUser = response.body().getRoleuser();
                     String emailUser = response.body().getEmailuser();
                     String photoUser = response.body().getPhotouser();
-                    saveSharepreferences(idUser,token,roleUser,emailUser,photoUser);
+                    String nameUser = response.body().getNameuser();
+                    ArrayList<PointsUsers> data = response.body().getPoints();
+                    Toast.makeText(LoginActivity.this, "" +(data.get(0).getPointlimit()).toString(), Toast.LENGTH_SHORT).show();
+                    saveSharepreferences(idUser,token,roleUser,emailUser,photoUser, nameUser);
                     Intent intent = new Intent(LoginActivity.this,Principal.class);
                     startActivity(intent);
                 }
@@ -110,7 +118,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void saveSharepreferences(Integer idUser,String token,String roleUser,String emailUser, String photoUser){
+    private void saveSharepreferences(Integer idUser,String token,String roleUser,String emailUser, String photoUser, String nameUser){
         //TODO GUARDAR LOS DATOS EN EL SHAREPREFERENCES
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("idUser",idUser);
@@ -118,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("roleUser",roleUser);
         editor.putString("emailUser",emailUser);
         editor.putString("imgUser", photoUser);
+        editor.putString("nameUser", nameUser);
         editor.apply();
 
     }

@@ -2,7 +2,11 @@ package ariel.az.devcode20.Activities;
 
 import android.content.pm.PackageManager;
 import android.util.Patterns;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.*;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -95,8 +99,23 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.menuregister, menu);
+        return true;
+    }
 
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.session:
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     private void checkFieldsRegister() {
         //TODO VALIDAR QUE TOODO LOS CAMPOS HAN SIDO AGREGADOS

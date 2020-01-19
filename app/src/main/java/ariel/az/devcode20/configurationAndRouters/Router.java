@@ -1,19 +1,6 @@
 package ariel.az.devcode20.configurationAndRouters;
 
-import ariel.az.devcode20.models.ListDenuncias;
-import ariel.az.devcode20.models.ListPublications;
-import ariel.az.devcode20.models.ModelLogin;
-import ariel.az.devcode20.models.ModelsCreateLikes;
-import ariel.az.devcode20.models.ModelsCreateMessages;
-import ariel.az.devcode20.models.ModelsGetMessages;
-import ariel.az.devcode20.models.ModelsMensajes;
-import ariel.az.devcode20.models.ModelsPublications;
-import ariel.az.devcode20.models.ModelsSendReportes;
-import ariel.az.devcode20.models.ModelsListMessages;
-import ariel.az.devcode20.models.ModelsRegister;
-import ariel.az.devcode20.models.ModelsUser;
-import ariel.az.devcode20.models.Token;
-import ariel.az.devcode20.models.ModelsSendLikes;
+import ariel.az.devcode20.models.*;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -111,18 +98,17 @@ public interface Router {
             "User-Agent: Android"
     })
 
-
-
-
-
     // TODO: 12/27/2019 ruta para la creacion del mensaje
     @POST("messages/create")
     Call<ModelsCreateMessages> createMessages (@Header("auto-token")String autoToken,
                                                   @Body ModelsCreateMessages modelsCreateMessages);
 
-//    -----------------------------------------------------------------------------------------------------
 
 
+
+    //TODO: 1/18/2020 OBTENER LOS LIKES DE CADA USUARIO
+    @GET("user/getPoints")
+    Call<ModelsPoints> setPoints(@Header("auto-token") String autoToken);
 
 
 }
