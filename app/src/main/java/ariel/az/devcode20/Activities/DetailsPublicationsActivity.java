@@ -2,6 +2,7 @@ package ariel.az.devcode20.Activities;
 
 import android.graphics.Color;
 import android.text.TextUtils;
+import android.view.*;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,9 +13,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
 import com.bumptech.glide.Glide;
 
@@ -54,7 +52,15 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_details_publications);
+
+        getSupportActionBar().show();
+
         preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         titledescription  = findViewById(R.id.nameUser);
         detailsdescription = findViewById(R.id.details_publications);

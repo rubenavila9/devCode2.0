@@ -1,6 +1,8 @@
 package ariel.az.devcode20.Activities;
 
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -34,12 +36,19 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         preferences = getSharedPreferences("Preferences", MODE_PRIVATE);
         if (!TextUtils.isEmpty(SaveDataUser.getToken(preferences))){
             startActivity(new Intent(this,Principal.class));
         }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        getSupportActionBar().show();
+
         router = conexion.getApiService();
         ButtonLogin = findViewById(R.id.btnEntry);
         ButtonRegister = findViewById(R.id.btnRegister);

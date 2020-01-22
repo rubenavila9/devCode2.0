@@ -3,15 +3,13 @@ package ariel.az.devcode20.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuInflater;
+import android.view.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,7 +26,15 @@ public class Principal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_principal);
+
+        getSupportActionBar().show();
 
         BottomNavigationView bottomNav = findViewById(R.id.navegation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);

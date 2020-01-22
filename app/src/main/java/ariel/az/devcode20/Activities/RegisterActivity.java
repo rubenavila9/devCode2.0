@@ -2,9 +2,7 @@ package ariel.az.devcode20.Activities;
 
 import android.content.pm.PackageManager;
 import android.util.Patterns;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
+import android.view.*;
 import android.widget.*;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +13,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -51,7 +48,15 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_register);
+
+        getSupportActionBar().show();
+
         emailRegister = findViewById(R.id.emailRegister);
         passRegister = findViewById(R.id.passRegister);
         nameRegister = findViewById(R.id.nameRegister);

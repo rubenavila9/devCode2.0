@@ -1,18 +1,16 @@
 package ariel.az.devcode20.Activities;
 
+import android.view.Window;
+import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Bundle;
-
 import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
-
 import ariel.az.devcode20.Adaptadores.AdminAdapter;
 import ariel.az.devcode20.Adaptadores.SwipeToDeleteCallback;
 import ariel.az.devcode20.R;
@@ -36,7 +34,15 @@ public class AdminActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_admin);
+
+        getSupportActionBar().show();
+
         linearLayoutAdmin = findViewById(R.id.linearLayoutAdmin);
         getReport();
 
