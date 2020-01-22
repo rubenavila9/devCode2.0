@@ -51,10 +51,9 @@ public class publicacionFragmento extends Fragment {
         ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(getActivity(),R.array.nivel,android.R.layout.simple_list_item_1);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         materialSpinner.setAdapter(arrayAdapter);
-
         materialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(@NotNull MaterialSpinner materialSpinner, @Nullable View view, int i, long l) {
+            public void onItemSelected( MaterialSpinner materialSpinner, View view, int i, long l) {
                 switch (i){
                     case 0:
                         Toast.makeText(getContext(), "1", Toast.LENGTH_SHORT).show();

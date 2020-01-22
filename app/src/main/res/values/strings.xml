@@ -64,5 +64,6 @@
         <item>nivel 3</item>
         <item>nivel 4</item>
     </string-array>
+
     <string name="accion">Seleciona accion de denuncia</string>
 </resources>

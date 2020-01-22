@@ -106,7 +106,6 @@ public class LoginActivity extends AppCompatActivity {
                     String photoUser = response.body().getPhotouser();
                     String nameUser = response.body().getNameuser();
                     ArrayList<PointsUsers> data = response.body().getPoints();
-                    Toast.makeText(LoginActivity.this, "" +(data.get(0).getPointlimit()).toString(), Toast.LENGTH_SHORT).show();
                     saveSharepreferences(idUser,token,roleUser,emailUser,photoUser, nameUser);
                     Intent intent = new Intent(LoginActivity.this,Principal.class);
                     startActivity(intent);

@@ -2,13 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
+              android:background="@color/white"
               android:layout_height="wrap_content">
-
     <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_height="match_parent">
         <RadioButton
                 android:text="Nivel 1"
                 android:layout_width="match_parent"
@@ -32,30 +30,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/radioButtonFour"/>
+                android:id="@+id/radioButtonLevelFour"/>
         <RadioButton
                 android:text="Nivel 5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/radioButtonFive"/>
+                android:id="@+id/radioButtonLevelFive"/>
         <RadioButton
                 android:text="Nivel 6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/radioButtonSix"/>
+                android:id="@+id/radioButtonLevelSix"/>
         <RadioButton
                 android:text="Nivel 7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/radioButtonSeven"/>
+                android:id="@+id/radioButtonLevelSeven"/>
         <RadioButton
                 android:text="Nivel 8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:id="@+id/radioButtonEight"/>
+                android:id="@+id/radioButtonLevelEight"/>
+        <RadioButton
+                android:text="Nivel 9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/radioButtonLevelNine"/>
+        <RadioButton
+                android:text="Nivel Extras"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/radioButtonLevelExtras"/>
     </RadioGroup>
 </LinearLayout>
