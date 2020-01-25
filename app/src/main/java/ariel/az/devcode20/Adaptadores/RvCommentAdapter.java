@@ -134,6 +134,9 @@ public class RvCommentAdapter extends RecyclerView.Adapter<RvCommentAdapter.View
                         onItemClickListener.OnItemClick(modelsGetMessages,getAdapterPosition());
                     }
                 });
+
+
+
         }
 
 

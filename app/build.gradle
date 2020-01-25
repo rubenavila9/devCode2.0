@@ -17,6 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    adbOptions {         timeOutInMs 10 * 1000     }
 }
 
 dependencies {
@@ -42,4 +43,5 @@ dependencies {
 
     //spinner
     implementation 'com.github.tiper:MaterialSpinner:1.4.0'
+
 }

@@ -15,7 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".accionendenuncias"></activity>
+        <activity android:name=".Activities.accionendenuncias">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Activities.AdminActivity" />
+        </activity>
         <activity
             android:name=".Activities.AdminActivity"
             android:label="@string/denunciasAdmin">

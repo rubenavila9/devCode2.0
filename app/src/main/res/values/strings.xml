@@ -45,6 +45,7 @@
     <string name="points">Mis puntos</string>
     <string name="quantityLikes">Likes faltantes</string>
     <string name="seleciona">Seleciona</string>
+    <string name="seleeccionarDenuncia">Seleccionar denuncia</string>
     <string name="enviardenuncia">ENVIAR DENUNCIA</string>
     <string-array name="nivel">
         <item>Nivel 1</item>
@@ -67,5 +68,10 @@
         <item>nivel 4</item>
     </string-array>
 
+
+
     <string name="accion">Seleciona accion de denuncia</string>
+    <string name="BLoquear">BLoquear</string>
+    <string name="desBloquear">Desbloquear</string>
+    <string name="Rol">Rol</string>
 </resources>

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
     tools:context=".Activities.LoginActivity">
 
     <Button
@@ -32,9 +31,6 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
@@ -53,9 +49,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="32dp"
-        android:backgroundTint="@color/white"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
+
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
@@ -90,7 +84,7 @@
             app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:src="@drawable/logodevcode"
+            android:src="@drawable/picture3"
             app:layout_constraintBottom_toTopOf="@+id/email"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

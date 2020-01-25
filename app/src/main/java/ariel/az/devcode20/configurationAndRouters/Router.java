@@ -1,5 +1,6 @@
 package ariel.az.devcode20.configurationAndRouters;
 
+import ariel.az.devcode20.Activities.accionendenuncias;
 import ariel.az.devcode20.models.*;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -109,6 +110,13 @@ public interface Router {
     //TODO: 1/18/2020 OBTENER LOS LIKES DE CADA USUARIO
     @GET("user/getPoints")
     Call<ModelsPoints> setPoints(@Header("auto-token") String autoToken);
+
+
+
+    // TODO: 1/25/2020 -----------------------------enviar el bloqueo o desbloqueo de la cuenta del usuario
+
+    @POST("extras/lock")
+    Call<ModelsMensajes> setBloqueoCuenta(@Body accionendenuncias.ModelsPermiss modelsPermiss);
 
 
 }

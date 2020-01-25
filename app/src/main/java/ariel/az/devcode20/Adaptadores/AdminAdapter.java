@@ -1,9 +1,8 @@
 package ariel.az.devcode20.Adaptadores;
 
 import android.app.Activity;
-import android.view.ContextMenu;
+import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import ariel.az.devcode20.Activities.accionendenuncias;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -61,6 +61,7 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
 
         private TextView CantidadDenuncias , MensajeDenunciado, UserDenunciado;
         private ImageView profile_image_denunciado;
+        private LinearLayout linearDenunn;
 
 
         public Admin(@NonNull View itemView) {
@@ -69,6 +70,21 @@ public class AdminAdapter extends RecyclerView.Adapter<AdminAdapter.Admin> {
             MensajeDenunciado = itemView.findViewById(R.id.MensajeDenunciado);
             UserDenunciado = itemView.findViewById(R.id.UserDenunciado);
             profile_image_denunciado = itemView.findViewById(R.id.profile_image_denunciado);
+            linearDenunn = itemView.findViewById(R.id.linearDenuncias);
+
+            linearDenunn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // TODO: 1/24/2020 cruzar el dato a la nueva pantalla
+                    Intent intent = new Intent(activity, accionendenuncias.class);
+                    intent.putExtra("idUserDen", arrayListDenuncias.get(getAdapterPosition()).getUserIduser());
+                    intent.putExtra("imgUserDen", arrayListDenuncias.get(getAdapterPosition()).getIduser().getPhotouser());
+                    intent.putExtra("emailUserDen", arrayListDenuncias.get(getAdapterPosition()).getIduser().getEmailuser());
+                    intent.putExtra("nameUseDen", arrayListDenuncias.get(getAdapterPosition()).getIduser().getNameuser());
+                    intent.putExtra("rolUseDen", arrayListDenuncias.get(getAdapterPosition()).getIduser().getRoleuser());
+                    activity.startActivity(intent);
+                }
+            });
         }
 
 

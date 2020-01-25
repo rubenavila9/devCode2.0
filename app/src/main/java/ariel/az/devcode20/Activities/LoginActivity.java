@@ -1,17 +1,16 @@
 package ariel.az.devcode20.Activities;
 
+import android.app.Dialog;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
 import ariel.az.devcode20.R;
 import ariel.az.devcode20.SharedPreferencesUser.SaveDataUser;
 import ariel.az.devcode20.configurationAndRouters.Router;
@@ -89,8 +88,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<Token> call, Response<Token> response) {
                 if (response.isSuccessful()){
                     //obtiene el json que me devuelte el backend
-                    String token = response.body().getAuthToken();
-                    getPersonalData(token);
+                    Boolean pass = response.body().isPass();
+
+                    if (pass != true){
+                        String message = response.body().getMessage();
+                        messageLock(message);
+                    }else {
+                        String token = response.body().getAuthToken();
+                        getPersonalData(token);
+                    }
                 }
             }
             @Override
@@ -139,5 +145,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void messageLock(String message){
+        Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.dialog_message_lock);
+        TextView lockMessage = dialog.findViewById(R.id.lockMessage);
+        dialog.getWindow().setLayout(Toolbar.LayoutParams.MATCH_PARENT,Toolbar.LayoutParams.WRAP_CONTENT);
+        lockMessage.setText(message);
+        dialog.show();
 
+    }
 }

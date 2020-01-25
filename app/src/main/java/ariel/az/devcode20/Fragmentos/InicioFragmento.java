@@ -105,7 +105,6 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
             inflater.inflate(R.menu.menusearch,menu);
             super.onCreateOptionsMenu(menu, inflater);
         }
-
     }
 
     @Override
