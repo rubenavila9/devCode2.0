@@ -66,8 +66,7 @@ public class IntroActivity extends AppCompatActivity {
         final List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem("Información Compartida", "Módulo de una biblioteca virtual. ",R.drawable.imga));
         mList.add(new ScreenItem("Publicaciones", "Una nueva forma de compartir tus conocimientos.",R.drawable.imgc));
-        mList.add(new ScreenItem("Comenta lo que piensas", "Has conocer tu opinion a los demás.",R.drawable.imgb));
-        mList.add(new ScreenItem("Gana puntos para tus materias","intercambia tus puntos por notas",R.drawable.coin));
+        mList.add(new ScreenItem("Comenta lo que piensas", "Has conocer tu opinión a los demás.",R.drawable.imgb));
         //setup viewpager
         screenPager = findViewById(R.id.screen_viewpager);
         introViewPagerAdapter = new IntroViewPagerAdapter(this,mList);

@@ -71,7 +71,7 @@
 
 
     <string name="accion">Seleciona accion de denuncia</string>
-    <string name="BLoquear">BLoquear</string>
+    <string name="BLoquear">Bloquear</string>
     <string name="desBloquear">Desbloquear</string>
     <string name="Rol">Rol</string>
 </resources>
