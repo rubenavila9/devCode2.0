@@ -97,10 +97,6 @@ public class perfilFragmento extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
-            case R.id.volver:
-                Intent intent = new Intent(getActivity(), Editarperfildelusuario.class);
-                startActivity(intent);
-                return true;
             case R.id.sign_out_login:
                 cerrarsesion();
                 return true;

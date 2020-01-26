@@ -31,6 +31,10 @@ public class ModelsPublicationsList {
     @Expose
     private Integer userid;
 
+    @SerializedName("photopublt")
+    @Expose
+    private String photopublt;
+
     @SerializedName("user")
     @Expose
     private ModelsUser iduser;
@@ -51,6 +55,10 @@ public class ModelsPublicationsList {
 
     public Integer getLevelSubject() {
         return levelSubject;
+    }
+
+    public String getPhotopublt() {
+        return photopublt;
     }
 
     public Integer getUserid() {

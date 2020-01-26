@@ -10,66 +10,110 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="@string/titulodelapublicacion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/textInputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/titulodelapublicacion"
+                    tools:layout_editor_absoluteY="40dp"
+            android:layout_marginTop="20dp">
 
-    <com.tiper.MaterialSpinner
-        android:id="@+id/material_spinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="30dp"
-        android:hint="@string/selecccionarNivel"
-        app:layout_constraintBottom_toTopOf="@+id/textInputEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:spinnerMode="dropdown" />
+                <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/namePublications"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.tiper.MaterialSpinner
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/material_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/selecccionarNivel"
+                    app:spinnerMode="dropdown" tools:layout_editor_absoluteY="136dp"/>
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:layout_marginTop="40dp"
+                    android:id="@+id/descriptionPublications"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:ems="10"
+                    android:gravity="left|top"
+                    android:hint="@string/detallesdelapregunta"
+                    android:inputType="textMultiLine"
+                    android:textSize="15sp"
+                    tools:layout_editor_absoluteY="270dp"/>
 
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
-        android:layout_width="match_parent"
-        android:layout_height="160dp"
-        android:layout_marginTop="54dp"
-        android:layout_marginBottom="84dp"
-        android:ems="10"
-        android:gravity="left|top"
-        android:hint="@string/detallesdelapregunta"
-        android:inputType="textMultiLine"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonpublication"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/material_spinner" />
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content">
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        android:id="@+id/photoPublications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_image_black_24dp"/>
+                <TextView
+                        android:id="@+id/messagePhoto"
+                        android:text="Imagen Cargada!"
+                        android:visibility="invisible"
+                        android:textStyle="bold"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/buttonpublication"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="20dp"
-        android:background="@color/white"
-        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
-        android:drawableTint="@color/colorPrimary"
-        android:text="publicar"
-        android:textColor="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_marginTop="50dp"
+                    android:layout_width="300dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content">
+                <ProgressBar
+                        style="?android:attr/progressBarStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/progressBar2"
+                        android:layout_marginBottom="50dp"
+                        android:layout_gravity="center"/>
+                <Button
+                        android:id="@+id/buttonpublication"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
+                        android:drawableTint="@color/colorPrimary"
+                        android:text="publicar"
+                        android:textColor="@color/colorPrimary"/>
+            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

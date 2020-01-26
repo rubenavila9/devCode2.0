@@ -33,6 +33,19 @@ public interface Router {
                                             @Part("passUser") RequestBody passUser,
                                             @Part("roleUser") RequestBody roleUser);
 
+
+
+    //---------------------------------crear publications ---------------------------------
+    @Multipart
+    @POST("publications/create")
+    Call<ModelsMensajes> routerCrearPublications(@Part MultipartBody.Part photo,
+                                                 @Part("namePublication") RequestBody namePublication,
+                                                 @Part("descriptPublication") RequestBody descriptPublication,
+                                                 @Part("levelSubject") RequestBody levelSubject,
+                                                 @Part("iduser") RequestBody iduser);
+
+
+
     //---------------------obtener todas las publicaciones-------------------
 
 

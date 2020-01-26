@@ -24,6 +24,7 @@ import ariel.az.devcode20.R;
 import ariel.az.devcode20.configurationAndRouters.Router;
 import ariel.az.devcode20.configurationAndRouters.conexion;
 import ariel.az.devcode20.models.ModelsMensajes;
+import ariel.az.devcode20.permmisSpecial.permissCamera;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -41,8 +42,8 @@ public class RegisterActivity extends AppCompatActivity {
     private Router router;
     MultipartBody.Part procfile;
     RequestBody email, password , roleUser , nameUser;
-    private static final int PReqCode = 2 ;
     private ProgressBar progressBar;
+    private permissCamera permissCamera;
 
 
     @Override
@@ -128,8 +129,10 @@ public class RegisterActivity extends AppCompatActivity {
                 || TextUtils.isEmpty(passRegister.getText().toString().trim()) || TextUtils.isEmpty(nameRegister.getText().toString().trim())){
             Toast.makeText(this, "LLeve todos los campos", Toast.LENGTH_SHORT).show();
         }else{
-            checkAndRequestForPermission();
-
+            permissCamera = new permissCamera(RegisterActivity.this);
+            if (permissCamera.checkAndRequestForPermission()){
+                openGallery();
+            }
         }
     }
 
@@ -140,24 +143,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    private void checkAndRequestForPermission() {
-        //TODO PEDIR PERMISO AL USUARIO PARA ACCEDER A LA GALERIA
-        if (ContextCompat.checkSelfPermission(RegisterActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(RegisterActivity.this, android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
-                Toast.makeText(RegisterActivity.this,"Porfavor necesitamos que nos de permiso",Toast.LENGTH_SHORT).show();
-            }
-            else
-            {
-                ActivityCompat.requestPermissions(RegisterActivity.this,
-                        new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},
-                        PReqCode);
-            }
-        }
-        else
-            openGallery();
 
-    }
 
 
 

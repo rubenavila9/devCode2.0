@@ -15,24 +15,28 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.accionendenuncias">
+        <activity android:name=".Activities.accionendenuncias"
+                  android:screenOrientation="portrait">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".Activities.AdminActivity" />
         </activity>
         <activity
             android:name=".Activities.AdminActivity"
+            android:screenOrientation="portrait"
             android:label="@string/denunciasAdmin">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.Principal" />
         </activity>
-        <activity android:name=".Activities.DetailsPublicationsActivity">
+        <activity android:name=".Activities.DetailsPublicationsActivity"
+                  android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.Principal" />
         </activity>
-        <activity android:name=".Activities.IntroActivity">
+        <activity android:name=".Activities.IntroActivity"
+                  android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -40,15 +44,22 @@
         </activity>
         <activity
             android:name=".Activities.Principal"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.LoginActivity"
             android:label="@string/login"
-            android:noHistory="true" />
-        <activity android:name=".Editarperfildelusuario" />
+            android:noHistory="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Editarperfildelusuario" >
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".Activities.DetailsPublicationsActivity" />
+        </activity>
         <activity
             android:name=".Activities.RegisterActivity"
-            android:label="@string/register">
+            android:label="@string/register"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activities.Principal"/>

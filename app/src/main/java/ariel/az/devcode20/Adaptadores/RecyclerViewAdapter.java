@@ -2,11 +2,16 @@ package ariel.az.devcode20.Adaptadores;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.telecom.Call;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
@@ -35,7 +40,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-       holder.dim(publicacion.get(position));
+        holder.dim(publicacion.get(position));
     }
 
 
@@ -49,14 +54,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private CircleImageView profile_image;
         private TextView nameUser, title, publicacionUser, nivel;
         private LinearLayout layoutRecyclerView;
+        private ImageView imgPublications;
         public ViewHolder( final View itemView) {
             super(itemView);
             profile_image = itemView.findViewById(R.id.profile_image);
             title = itemView.findViewById(R.id.titlePublications);
             publicacionUser = itemView.findViewById(R.id.descriptionPublications);
-            layoutRecyclerView = itemView.findViewById(R.id.layoutRecyclerView);
             nameUser = itemView.findViewById(R.id.nameUser);
             nivel = itemView.findViewById(R.id.nivel);
+
+
+
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,6 +78,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     intent.putExtra("idUser",publicacion.get(position).getUserid());
                     intent.putExtra("emailUser",publicacion.get(position).getIduser().getEmailuser());
                     intent.putExtra("level",publicacion.get(position).getLevelSubject());
+                    intent.putExtra("imgPublic",publicacion.get(position).getPhotopublt());
                     mContext.startActivity(intent);
                 }
             });
@@ -80,6 +89,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             this.nameUser.setText(publicacion.getIduser().getNameuser());
             this.nivel.setText( "Nivel " + publicacion.getLevelSubject());
             Glide.with(mContext).load(publicacion.getIduser().getPhotouser()).into(profile_image);
+
+
         }
 
 

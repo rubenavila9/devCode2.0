@@ -14,6 +14,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import ariel.az.devcode20.Editarperfildelusuario;
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
@@ -41,12 +42,15 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private CircleImageView imgUser;
     private Router router;
     private EditText postRespond;
-    private Integer idPublication;
+
     private ArrayList<ModelsGetMessages> modelsGetMessages;
     private RecyclerView rvComment;
     private RvCommentAdapter commentAdapter;
-    private String roleUser, photoUser, emailUser;
+    private String roleUser, photoUser ;
+    private static String namePubli, desecripPubli,imgPublict, emailUser;
+    private static int idlevel, idPublication;
     private Dialog myDialog;
+    private ImageView imgPublicat;
     private LinearLayout linearLayoutSendData;
 
     @Override
@@ -68,14 +72,29 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         btnRespond = findViewById(R.id.btnRespond);
         imgUser = findViewById(R.id.imageUser);
         postRespond = findViewById(R.id.postRespond);
+        imgPublicat = findViewById(R.id.imgPublicat);
         linearLayoutSendData = findViewById(R.id.linearLayoutSendData);
         getData();
+        titledescription.setText(namePubli);
+        detailsdescription.setText(desecripPubli);
+        nivel.setText("nivel " +  String.valueOf(idlevel));
         router = conexion.getApiService();
         getMessagesPublications();
 
         if (checkToken()){
             linearLayoutSendData.setVisibility(View.INVISIBLE);
         }
+
+
+        imgPublicat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), Editarperfildelusuario.class);
+                intent.putExtra("img", imgPublict);
+                startActivity(intent);
+            }
+        });
+
 
         btnRespond.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +123,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
 
             }
         });
+
+
 
     }
 
@@ -135,12 +156,30 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        // TODO: 12/26/2019 obtener los datos de la pantalla principal desde el fragmento 
-        titledescription.setText(getIntent().getExtras().getString("titlePublication"));
-        detailsdescription.setText(getIntent().getExtras().getString("detailsPublications"));
-        idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
-        emailUser = getIntent().getExtras().getString("emailUser");
-        nivel.setText("nivel " +  String.valueOf(getIntent().getExtras().getInt("level")));
+        // TODO: 12/26/2019 obtener los datos de la pantalla principal desde el fragmento
+        try {
+            idPublication = Integer.parseInt(getIntent().getExtras().getString("idPublication"));
+            desecripPubli = getIntent().getExtras().getString("detailsPublications");
+            namePubli = getIntent().getExtras().getString("titlePublication");
+            emailUser = getIntent().getExtras().getString("emailUser");
+            imgPublict = getIntent().getExtras().getString("imgPublic");
+            idlevel = getIntent().getExtras().getInt("level");
+
+            loadDataPersonalImage();
+        }catch (Exception e){
+            loadDataPersonalImage();
+        }
+    }
+    
+    private void loadDataPersonalImage(){
+        if (TextUtils.isEmpty(imgPublict)){
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, 0);
+            imgPublicat.setLayoutParams(params);
+        }else {
+            Glide.with(DetailsPublicationsActivity.this).load(imgPublict).into(imgPublicat);
+        }
+
+
         roleUser= SaveDataUser.getEmailUser(preferences);
         photoUser = SaveDataUser.getImgUser(preferences);
 
