@@ -42,6 +42,7 @@ public interface Router {
                                                  @Part("namePublication") RequestBody namePublication,
                                                  @Part("descriptPublication") RequestBody descriptPublication,
                                                  @Part("levelSubject") RequestBody levelSubject,
+                                                 @Part("day") RequestBody day,
                                                  @Part("iduser") RequestBody iduser);
 
 

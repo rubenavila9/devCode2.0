@@ -37,6 +37,10 @@ import okhttp3.RequestBody;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import ariel.az.devcode20.R;
 import retrofit2.Call;
@@ -51,7 +55,7 @@ import static android.app.Activity.RESULT_OK;
 public class publicacionFragmento extends Fragment {
 
 
-    private String img_path;
+    private String img_path, simpleDateFormat;
     private int postionNivel = 0;
     private SharedPreferences preferences;
     private Router router;
@@ -63,7 +67,7 @@ public class publicacionFragmento extends Fragment {
     private Button buttonpublicacion;
     File file;
     MultipartBody.Part procfile;
-    RequestBody namePubl, descripPubl, levelPubl, iduser;
+    RequestBody namePubl, descripPubl, levelPubl, iduser, day;
     public publicacionFragmento() {
         // Required empty public constructor
     }
@@ -183,7 +187,10 @@ public class publicacionFragmento extends Fragment {
 
     private void valPhotoPublications(){
         router = conexion.getApiService();
+        Date myDate = new Date();
+        simpleDateFormat  = new SimpleDateFormat("dd-MM-yyyy").format(myDate);
         try {
+            day = RequestBody.create(MediaType.parse("multipart/form-data"),simpleDateFormat);
             namePubl = RequestBody.create(MediaType.parse("multipart/form-data"),namePublications.getText().toString().trim());
             descripPubl = RequestBody.create(MediaType.parse("multipart/form-data"),descriptionPublications.getText().toString().trim());
             levelPubl = RequestBody.create(MediaType.parse("multipart/form-data"),String.valueOf(postionNivel).trim());
@@ -199,7 +206,7 @@ public class publicacionFragmento extends Fragment {
 
     private void setPublicationsDB(){
         buttonpublicacion.setVisibility(View.INVISIBLE);
-        Call<ModelsMensajes> setPublications = router.routerCrearPublications(procfile,namePubl,descripPubl,levelPubl,iduser);
+        Call<ModelsMensajes> setPublications = router.routerCrearPublications(procfile,namePubl,descripPubl,levelPubl,day,iduser);
         setPublications.enqueue(new Callback<ModelsMensajes>() {
             @Override
             public void onResponse(Call<ModelsMensajes> call, Response<ModelsMensajes> response) {

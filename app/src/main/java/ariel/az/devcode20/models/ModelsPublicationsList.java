@@ -35,6 +35,10 @@ public class ModelsPublicationsList {
     @Expose
     private String photopublt;
 
+    @SerializedName("date")
+    @Expose
+    private String date;
+
     @SerializedName("user")
     @Expose
     private ModelsUser iduser;
@@ -68,6 +72,10 @@ public class ModelsPublicationsList {
 
     public ModelsUser getIduser() {
         return iduser;
+    }
+
+    public String getDate() {
+        return date;
     }
 }
 

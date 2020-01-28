@@ -52,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         private CircleImageView profile_image;
-        private TextView nameUser, title, publicacionUser, nivel;
+        private TextView nameUser, title, publicacionUser, nivel, date;
         private LinearLayout layoutRecyclerView;
         private ImageView imgPublications;
         public ViewHolder( final View itemView) {
@@ -62,6 +62,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             publicacionUser = itemView.findViewById(R.id.descriptionPublications);
             nameUser = itemView.findViewById(R.id.nameUser);
             nivel = itemView.findViewById(R.id.nivel);
+            date = itemView.findViewById(R.id.date);
 
 
 
@@ -88,6 +89,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             this.publicacionUser.setText(publicacion.getDescriptpublication());
             this.nameUser.setText(publicacion.getIduser().getNameuser());
             this.nivel.setText( "Nivel " + publicacion.getLevelSubject());
+            this.date.setText(publicacion.getDate());
             Glide.with(mContext).load(publicacion.getIduser().getPhotouser()).into(profile_image);
 
 
