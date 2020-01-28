@@ -80,6 +80,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     intent.putExtra("emailUser",publicacion.get(position).getIduser().getEmailuser());
                     intent.putExtra("level",publicacion.get(position).getLevelSubject());
                     intent.putExtra("imgPublic",publicacion.get(position).getPhotopublt());
+                    intent.putExtra("date",publicacion.get(position).getDate());
                     mContext.startActivity(intent);
                 }
             });

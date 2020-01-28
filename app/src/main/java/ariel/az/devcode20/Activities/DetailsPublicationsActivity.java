@@ -36,7 +36,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DetailsPublicationsActivity extends AppCompatActivity {
-    private TextView titledescription, detailsdescription , nivel;
+    private TextView titledescription, detailsdescription , nivel, data;
     private Button btnRespond;
     private SharedPreferences preferences;
     private CircleImageView imgUser;
@@ -47,7 +47,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
     private RecyclerView rvComment;
     private RvCommentAdapter commentAdapter;
     private String roleUser, photoUser ;
-    private static String namePubli, desecripPubli,imgPublict, emailUser;
+    private static String namePubli, desecripPubli,imgPublict, emailUser, date;
     private static int idlevel, idPublication;
     private Dialog myDialog;
     private ImageView imgPublicat;
@@ -74,10 +74,12 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         postRespond = findViewById(R.id.postRespond);
         imgPublicat = findViewById(R.id.imgPublicat);
         linearLayoutSendData = findViewById(R.id.linearLayoutSendData);
+        data = findViewById(R.id.date);
         getData();
         titledescription.setText(namePubli);
         detailsdescription.setText(desecripPubli);
         nivel.setText("nivel " +  String.valueOf(idlevel));
+        data.setText(date);
         router = conexion.getApiService();
         getMessagesPublications();
 
@@ -164,7 +166,7 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
             emailUser = getIntent().getExtras().getString("emailUser");
             imgPublict = getIntent().getExtras().getString("imgPublic");
             idlevel = getIntent().getExtras().getInt("level");
-
+            date = getIntent().getExtras().getString("date");
             loadDataPersonalImage();
         }catch (Exception e){
             loadDataPersonalImage();
