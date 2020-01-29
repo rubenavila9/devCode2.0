@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import ariel.az.devcode20.Activities.AdminActivity;
@@ -39,6 +40,7 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
     private FloatingActionButton floatingAdmin;
     private SharedPreferences sharedPreferences;
     private Dialog dialog;
+    private SwipeRefreshLayout swipe;
     private RadioButton radioButtonOne, radioButtonTwo,
             radioButtonThree, radioButtonFour, radioButtonFive , radioButtonSix, radioButtonSeven,
             radioButtonEight, radioButtonNine, radioButtonExtra;
@@ -66,6 +68,15 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.fragment_iniciofragmento, container, false);
         setHasOptionsMenu(true);
         floatingAdmin = view.findViewById(R.id.floatingAdmin);
+        swipe = view.findViewById(R.id.swipe);
+    getDataDB();
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipe.setRefreshing(true);
+                getDataDB();
+            }
+        });
 
         if (SaveDataUser.getRoleUser(sharedPreferences).equals("admin")){
             // TODO: 12/26/2019 validar el usuario para permitir el acceso a la pantalla administrador
@@ -74,6 +85,12 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
         }
 
 
+
+       return view;
+    }
+
+
+    private void getDataDB(){
         Call<ListPublications> listCall= router.obtenerPublcaciones();
         // TODO: 12/26/2019 se realiza la consulta a la base de datos para obtener todas las publicaciones
         listCall.enqueue(new Callback<ListPublications>() {
@@ -88,6 +105,7 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
                     recyclerViewAdapter = new RecyclerViewAdapter(modelsPublicationsLists,getContext());
                     recyclerView.setAdapter(recyclerViewAdapter);
                     recyclerView.setHasFixedSize(true);
+                    swipe.setRefreshing(false);
                 }
             }
             @Override
@@ -95,7 +113,6 @@ public class InicioFragmento extends Fragment implements View.OnClickListener {
 
             }
         });
-       return view;
     }
 
 

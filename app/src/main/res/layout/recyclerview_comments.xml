@@ -17,12 +17,11 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginLeft="10dp"
             android:orientation="vertical">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/photoUserMessage"
-                android:layout_width="40dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:scaleType="centerCrop"
                 app:civ_border_color="#FF000000"
@@ -37,12 +36,12 @@
             android:gravity="center"
             android:layout_height="match_parent">
             <TextView
-                android:layout_marginTop="5dp"
                 android:id="@+id/commentaryUser"
                 android:text="@string/mensajeUsuario"
                 android:layout_width="0dp"
                 android:layout_weight="3"
-                android:layout_height="wrap_content" />
+                android:gravity="center|start"
+                android:layout_height="match_parent" />
             <ImageView
                 android:id="@+id/imageLike"
                 android:layout_width="0dp"

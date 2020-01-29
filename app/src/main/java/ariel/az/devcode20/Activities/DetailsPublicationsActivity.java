@@ -238,8 +238,8 @@ public class DetailsPublicationsActivity extends AppCompatActivity {
         descriptionQuestions = myDialog.findViewById(R.id.descriptionQuestions);
         btnUpdateQuestions = myDialog.findViewById(R.id.btnUpdateQuestions);
         btnCancel = myDialog.findViewById(R.id.btnCancel);
-        titleQuestions.setText(getIntent().getExtras().getString("titlePublication"));
-        descriptionQuestions.setText(getIntent().getExtras().getString("detailsPublications"));
+        titleQuestions.setText(namePubli);
+        descriptionQuestions.setText(desecripPubli);
         btnUpdateQuestions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

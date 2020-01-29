@@ -213,6 +213,7 @@ public class publicacionFragmento extends Fragment {
                 if (response.isSuccessful()){
                     Toast.makeText(getActivity(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     buttonpublicacion.setVisibility(View.VISIBLE);
+                    startActivity(new Intent(getActivity(),Principal.class));
                 }
             }
 
